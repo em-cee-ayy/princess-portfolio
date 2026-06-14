@@ -1,0 +1,388 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --xp-bg: linear-gradient(180deg, #5b9bd5 0%, #84b8e8 35%, #c2e0f5 60%, #7cb86b 60%, #4d8a3e 100%);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "MS Sans Serif", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  color: #000;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--xp-bg);
+  background-size: cover;
+  background-attachment: fixed;
+  user-select: none;
+  cursor: default;
+}
+
+/* Bliss-inspired sky + hill backdrop */
+.bliss-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 70% 30%, rgba(255,255,255,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 30% at 30% 25%, rgba(255,255,255,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, #4d8a3e 0%, #6ca85a 35%, transparent 60%),
+    linear-gradient(180deg, #5b9bd5 0%, #84b8e8 35%, #c2e0f5 58%, #7cb86b 58%, #4d8a3e 100%);
+}
+
+/* XP window chrome */
+.xp-window {
+  background: #ece9d8;
+  border: 1px solid #0831d9;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+}
+
+.xp-titlebar {
+  background: linear-gradient(180deg, #0058ee 0%, #3593ff 8%, #288eff 40%, #0058ee 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 3px 4px 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+  height: 22px;
+}
+
+.xp-titlebar:active {
+  cursor: grabbing;
+}
+
+.xp-titlebar.inactive {
+  background: linear-gradient(180deg, #7a96df 0%, #a3b8e8 100%);
+}
+
+.xp-titlebar-btn {
+  width: 22px;
+  height: 20px;
+  background: linear-gradient(180deg, #f08c8c 0%, #d44b4b 100%);
+  border: 1px solid #771010;
+  color: #fff;
+  font-family: "Marlett", "Arial Black", sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+  margin-left: 2px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+}
+
+.xp-titlebar-btn.min,
+.xp-titlebar-btn.max {
+  background: linear-gradient(180deg, #4a9aff 0%, #1565c0 100%);
+  border-color: #0a3068;
+}
+
+.xp-titlebar-btn:active {
+  filter: brightness(0.9);
+}
+
+.xp-content {
+  padding: 12px;
+  background: #ece9d8;
+  font-size: 12px;
+  color: #000;
+}
+
+/* Classic 9x button */
+.xp-btn {
+  background: linear-gradient(180deg, #fdfdfd 0%, #e6e3d4 100%);
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  padding: 4px 14px;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  color: #000;
+  box-shadow: inset 0 -1px 0 #b9b6a6;
+}
+
+.xp-btn:hover {
+  background: linear-gradient(180deg, #fff 0%, #f0ecd8 100%);
+}
+
+.xp-btn:active {
+  background: linear-gradient(180deg, #d4d0bc 0%, #ece9d8 100%);
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+/* Inset content area like a textbox */
+.xp-inset {
+  background: #fff;
+  border: 1px solid #7f9db9;
+  box-shadow: inset 1px 1px 0 #0a0a0a33;
+  padding: 6px 8px;
+}
+
+/* Taskbar */
+.xp-taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(180deg, #245edc 0%, #3a6fe0 8%, #245edc 18%, #1941a5 100%);
+  border-top: 1px solid #0831d9;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+}
+
+.xp-start-btn {
+  height: 30px;
+  padding: 0 22px 0 12px;
+  background: linear-gradient(180deg, #399b3a 0%, #279129 18%, #1d7a1e 80%, #144d15 100%);
+  color: #fff;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14px;
+  border: none;
+  border-right: 1px solid #0a3a0b;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.xp-start-btn:hover {
+  filter: brightness(1.1);
+}
+
+.xp-taskbar-item {
+  background: linear-gradient(180deg, #3a86f7 0%, #1f5fcc 100%);
+  color: #fff;
+  border: 1px solid #1a4a9c;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin-left: 4px;
+  font-size: 11px;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.xp-taskbar-item.active {
+  background: linear-gradient(180deg, #1a4a9c 0%, #0f3678 100%);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.xp-clock {
+  margin-left: auto;
+  background: linear-gradient(180deg, #1592e6 0%, #0a6cba 100%);
+  color: #fff;
+  border-left: 1px solid #0a3a78;
+  padding: 0 12px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+}
+
+/* Desktop icons */
+.desktop-icon {
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  padding: 6px 4px;
+  border-radius: 3px;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
+  font-size: 11px;
+  line-height: 1.2;
+  user-select: none;
+}
+
+.desktop-icon:hover {
+  background: rgba(49, 106, 197, 0.25);
+  outline: 1px dotted rgba(255,255,255,0.6);
+}
+
+.desktop-icon.selected {
+  background: rgba(49, 106, 197, 0.5);
+  outline: 1px dotted #fff;
+}
+
+.desktop-icon .icon-art {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.desktop-icon .icon-label {
+  display: inline-block;
+  padding: 1px 3px;
+  background: transparent;
+}
+
+/* Top menu bar (Contact / Resume) */
+.xp-topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 22px;
+  background: linear-gradient(180deg, #d4d0c8 0%, #ece9d8 100%);
+  border-bottom: 1px solid #808080;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 9998;
+}
+
+.xp-topbar button {
+  background: transparent;
+  border: none;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+
+.xp-topbar button:hover {
+  background: #0a4ec3;
+  color: #fff;
+}
+
+/* Dialog box */
+.dialog-box {
+  background: #ece9d8;
+  border: 1px solid #0a3068;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  min-width: 320px;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+}
+
+/* Tabs (work explorer) */
+.xp-tabs {
+  display: flex;
+  border-bottom: 1px solid #999;
+  margin-top: 4px;
+  padding-left: 4px;
+  gap: 2px;
+}
+
+.xp-tab {
+  background: linear-gradient(180deg, #f0eddf 0%, #d4d0bc 100%);
+  border: 1px solid #999;
+  border-bottom: none;
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.xp-tab.active {
+  background: #fff;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1px;
+}
+
+/* Address bar */
+.xp-addressbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  background: #ece9d8;
+  border-bottom: 1px solid #aca899;
+  font-size: 11px;
+}
+
+.xp-addressbar input {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #7f9db9;
+  padding: 2px 6px;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+/* Scrollbar look */
+.xp-window ::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+.xp-window ::-webkit-scrollbar-track {
+  background: #ece9d8;
+  border-left: 1px solid #aca899;
+}
+.xp-window ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #fdfdfd 0%, #d4d0bc 100%);
+  border: 1px solid #888;
+  border-radius: 2px;
+}
+.xp-window ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #fff 0%, #c8c4ae 100%);
+}
+
+/* Links */
+a.xp-link {
+  color: #0a3cc4;
+  text-decoration: underline;
+}
+a.xp-link:hover {
+  color: #d94f3d;
+}
+
+/* Pixel-ish heading font for novelty */
+.serif {
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Selection */
+::selection {
+  background: #316ac5;
+  color: #fff;
+}
+
+/* Subtle blink for taskbar new */
+@keyframes blinkOnce {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+}
+.blink {
+  animation: blinkOnce 1.2s ease 2;
+}

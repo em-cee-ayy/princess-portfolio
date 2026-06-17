@@ -3,6 +3,17 @@ export type CaseStudy = {
   role: string;
   emoji: string;
   title: string;
+  cover?: string;                    // main card/hero image
+  screenshots?: {
+    src: string;                     // image path or URL
+    caption?: string;                // "90-second check-in UI"
+    alt?: string;                    // accessibility
+  }[];
+  videos?: {
+    src: string;          // path or external URL
+    caption?: string;
+    poster?: string;      // thumbnail shown before video plays (optional but recommended)
+  }[];
   pitch: string;
   problem: string;
   insight: string;
@@ -20,6 +31,31 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Engineer",
     emoji: "🛠️",
     title: "BrainMode — a cognitive state router (not a task manager)",
+    cover: "/case-studies/brainmode/cover.jpg",         // ← card thumbnail
+    // videos: [
+    // {
+    //   src: "/case-studies/brainmode/demo.mp4",
+    //   caption: "cognitive state router — full walkthrough",
+    //   poster: "/case-studies/brainmode/demo-thumbnail.jpg",  // shows while video loads
+    // }
+    // ],
+    // screenshots: [
+    // {
+    //   src: "/case-studies/brainmode/screenshot-checkin.jpg",
+    //   caption: "90-second neuroscience-backed check-in",
+    //   alt: "BrainMode check-in screen with arousal/valence sliders",
+    // },
+    // {
+    //   src: "/case-studies/brainmode/screenshot-flow.jpg",
+    //   caption: "flow state UI — density drops, motion slows",
+    //   alt: "BrainMode UI in flow cognitive mode",
+    // },
+    // {
+    //   src: "/case-studies/brainmode/screenshot-wallpaper.jpg",
+    //   caption: "AI-generated cognitive wallpaper for this session",
+    //   alt: "Replicate-generated session wallpaper",
+    // },
+    // ],
     pitch:
       "A full-stack productivity app built on cognitive neuroscience. Instead of showing you everything on your to-do list, it asks how your brain is doing first — then routes you to the tasks you're actually equipped to handle right now.",
     problem:
@@ -64,6 +100,30 @@ export const caseStudies: CaseStudy[] = [
     role: "AI Engineer",
     emoji: "🤖",
     title: "Happy Trails AI — trail recommendations for your nervous system",
+    // videos: [
+    // {
+    //   src: "/case-studies/brainmode/demo.mp4",
+    //   caption: "cognitive state router — full walkthrough",
+    //   poster: "/case-studies/brainmode/demo-thumbnail.jpg",  // shows while video loads
+    // }
+    // ],
+    // screenshots: [
+    // {
+    //   src: "/case-studies/brainmode/screenshot-checkin.jpg",
+    //   caption: "90-second neuroscience-backed check-in",
+    //   alt: "BrainMode check-in screen with arousal/valence sliders",
+    // },
+    // {
+    //   src: "/case-studies/brainmode/screenshot-flow.jpg",
+    //   caption: "flow state UI — density drops, motion slows",
+    //   alt: "BrainMode UI in flow cognitive mode",
+    // },
+    // {
+    //   src: "/case-studies/brainmode/screenshot-wallpaper.jpg",
+    //   caption: "AI-generated cognitive wallpaper for this session",
+    //   alt: "Replicate-generated session wallpaper",
+    // },
+    // ],
     pitch:
       "An AI-powered trail recommendation engine built on Attention Restoration Theory. Instead of matching hikes to fitness levels, it matches them to cognitive states — because the right environment for a burned-out engineer and a creatively blocked designer are neurologically different.",
     problem:
@@ -110,6 +170,30 @@ export const caseStudies: CaseStudy[] = [
     role: "Design Engineer",
     emoji: "🎨",
     title: "ABRC — Anti Brain Rot Club, a live neuro-informed design case study",
+    // videos: [
+    // {
+    //   src: "/case-studies/brainmode/demo.mp4",
+    //   caption: "cognitive state router — full walkthrough",
+    //   poster: "/case-studies/brainmode/demo-thumbnail.jpg",  // shows while video loads
+    // }
+    // ],
+    // screenshots: [
+    // {
+    //   src: "/case-studies/brainmode/screenshot-checkin.jpg",
+    //   caption: "90-second neuroscience-backed check-in",
+    //   alt: "BrainMode check-in screen with arousal/valence sliders",
+    // },
+    // {
+    //   src: "/case-studies/brainmode/screenshot-flow.jpg",
+    //   caption: "flow state UI — density drops, motion slows",
+    //   alt: "BrainMode UI in flow cognitive mode",
+    // },
+    // {
+    //   src: "/case-studies/brainmode/screenshot-wallpaper.jpg",
+    //   caption: "AI-generated cognitive wallpaper for this session",
+    //   alt: "Replicate-generated session wallpaper",
+    // },
+    // ],
     pitch:
       "ABRC is a live neuro-informed design case study — a personal brand website where every design decision is explicitly grounded in cognitive science and published with citations. It's not just a portfolio piece. It's proof that evidence-based design creates experiences that feel different because they're built differently.",
     problem:
@@ -155,6 +239,30 @@ export const caseStudies: CaseStudy[] = [
     role: "AI Product Manager",
     emoji: "📋",
     title: "The Phantom PRD — an unsolicited AI PM strategy for Character.AI",
+    // videos: [
+    // {
+    //   src: "/case-studies/brainmode/demo.mp4",
+    //   caption: "cognitive state router — full walkthrough",
+    //   poster: "/case-studies/brainmode/demo-thumbnail.jpg",  // shows while video loads
+    // }
+    // ],
+    // screenshots: [
+    // {
+    //   src: "/case-studies/brainmode/screenshot-checkin.jpg",
+    //   caption: "90-second neuroscience-backed check-in",
+    //   alt: "BrainMode check-in screen with arousal/valence sliders",
+    // },
+    // {
+    //   src: "/case-studies/brainmode/screenshot-flow.jpg",
+    //   caption: "flow state UI — density drops, motion slows",
+    //   alt: "BrainMode UI in flow cognitive mode",
+    // },
+    // {
+    //   src: "/case-studies/brainmode/screenshot-wallpaper.jpg",
+    //   caption: "AI-generated cognitive wallpaper for this session",
+    //   alt: "Replicate-generated session wallpaper",
+    // },
+    // ],
     pitch:
       "The Phantom PRD analyzes Character.AI through the lens of behavioral psychology, identifies 3 critical gaps in how it serves — and sometimes undermines — human cognition, and reimagines the product with a neuroscience-informed lens, including a speculative product vision film.",
     problem:

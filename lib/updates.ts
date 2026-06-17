@@ -25,11 +25,11 @@ export type Update = {
 
 export const updates: Update[] = [
   {
-    id: "abrc-launch",
+    id: "abrc",
     title: "ABRC v1 site lands soon 🧠",
-    date: "June 2026",
+    date: "May 2026",
     caption:
-      "deep in the design decisions doc — every color + spacing choice on the ABRC site gets a neuro citation. building in public on Substack alongside it.",
+      "deep in the design decisions doc; every color + spacing choice on the ABRC site gets a neuro citation. building in public alongside it.",
     emoji: "🧠",
     tags: ["abrc", "project"],
   },
@@ -38,37 +38,37 @@ export const updates: Update[] = [
     title: "BrainMode v1 in build",
     date: "June 2026",
     caption:
-      "evolving Flux into BrainMode. 90-second cognitive check-in → Claude routes you to tasks that match your brain state. shipping with 3 of the 6 states first.",
+      "evolving the original app, Flux, into BrainMode. 90-second cognitive check-in → Claude routes you to tasks that match your brain state. shipping with 3 of the 6 states first.",
     emoji: "🛠️",
     tags: ["project"],
   },
   {
     id: "soci-webinar",
-    title: "Claude training webinar @ SOCi",
+    title: "Claude/AI training webinar @ SOCi",
     date: "Spring 2026",
     caption:
-      "ran another company-wide session with the VPs + CTO. theme this round: 'AI-native, not AI-veneer.' got to demo the LMS + workflows live.",
+      "ran another company-wide session with the VPs + CTO. theme this round: 'Using Claude to 10x productivity.' got to demo the LMS + workflows live.",
     emoji: "🚀",
     tags: ["soci", "event"],
   },
   {
-    id: "travel-placeholder",
-    title: "weekend reset trip 🌲",
-    date: "May 2026",
+    id: "travel",
+    title: "spending a month in tokyo, japan 🇯🇵",
+    date: "June 2026",
     caption:
-      "research field trip more than vacation — testing Attention Restoration Theory on myself before Happy Trails AI ships. canopy cover does what they said it does.",
-    emoji: "🌲",
+      "having fun exploring a completely new country while gathering tons of design inspiration along the way.",
+    emoji: "✈️",
     tags: ["travel", "life"],
   },
   // 👇 add new entries above this line — replace this placeholder with real ones
   {
-    id: "placeholder-photo",
-    title: "drop a photo here",
-    date: "whenever",
-    caption:
-      "add a real image at /public/updates/your-image.jpg and reference it via the `image` field. supports external URLs too.",
+    id: "lucky-cats",
+    title: "recent inspiration",
+    date: "June 2026",
+    caption: "finally learned the history behind the lucky cat (maneki-neko) and its many variations!",
     emoji: "📸",
-    tags: ["life"],
+    image: "https://photos.app.goo.gl/TZdvbyARu3RtXSSw8",
+    tags: ["life","tokyo"],
   },
 ];
 

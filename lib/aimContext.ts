@@ -48,7 +48,7 @@ Flux — AI-Powered Behavioral Productivity System (Independent, 2025 – Presen
 - AI & Technical: SQL, JavaScript, HTML/CSS, API integrations, Python, PHP, debugging, data analysis, React, Tailwind, Next.js, Firebase, Supabase, behavioral data analysis, AI/ML product integration, Anthropic + OpenAI APIs
 - Product Management: Roadmapping, user research, stakeholder collaboration, Agile/Scrum, metrics-driven decisions, consumer app lifecycle, research-to-feature translation, privacy-first product strategy
 - UX & Human-Centered Design: Usability testing, prototyping, wireframing, information architecture, neuro-informed design
-- Tools: Figma, Confluence, GitHub, Zendesk, Salesforce, Trello, Notion, Adobe Creative Cloud, Chrome devtools
+- Tools: Figma, Weavy, Node-based tools, Confluence, GitHub, Zendesk, Salesforce, Trello, Notion, Adobe Creative Cloud, Chrome devtools
 - Data Systems & Infrastructure: API integrations + debugging, data pipeline troubleshooting, platform reliability analysis, large dataset interpretation, privacy-compliant data frameworks, audience segmentation, identity resolution
 
 == EDUCATION ==

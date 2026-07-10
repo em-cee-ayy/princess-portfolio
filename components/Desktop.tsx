@@ -9,6 +9,7 @@ import FriendlyTip from "./FriendlyTip";
 
 import Welcome from "./windows/Welcome";
 import WorkExplorer from "./windows/WorkExplorer";
+import SystemMapWindow from "./windows/SystemMapWindow";
 import SOCiHighlights from "./windows/SOCiHighlights";
 import SpillTheBeans from "./windows/SpillTheBeans";
 import BrainLab from "./windows/BrainLab";
@@ -21,6 +22,7 @@ import WhatsNew from "./windows/WhatsNew";
 type AppId =
   | "welcome"
   | "work"
+  | "systemmap"
   | "soci"
   | "spill"
   | "brainlab"
@@ -41,7 +43,8 @@ const APP_META: Record<
   { title: string; icon: string; width?: number; height?: number; x?: number; y?: number }
 > = {
   welcome: { title: "welcome", icon: "👋", width: 500, x: 80, y: 70 },
-  work: { title: "work.explorer — Princess's Portfolio", icon: "💼", width: 760, height: 560, x: 180, y: 80 },
+  work: { title: "work.explorer — Mariah's Portfolio", icon: "💼", width: 760, height: 560, x: 180, y: 80 },
+  systemmap: { title: "System Map.exe", icon: "🗺️", width: 440, height: 380, x: 140, y: 90 },
   soci: { title: "SOCi Highlights", icon: "🚀", width: 640, height: 540, x: 220, y: 100 },
   spill: { title: "Spill the Beans!", icon: "🫘", width: 520, height: 480, x: 260, y: 90 },
   brainlab: { title: "Brain Lab — ABRC", icon: "🧠", width: 700, height: 600, x: 200, y: 70 },
@@ -53,6 +56,8 @@ const APP_META: Record<
 };
 
 const ICONS: { id: AppId; label: string; art: React.ReactNode }[] = [
+  // portfolio cluster — the map sits next to the case studies it maps
+  { id: "systemmap", label: "System.Map", art: <span>🗺️</span> },
   { id: "work", label: "work.explorer", art: <span>💼</span> },
   { id: "soci", label: "SOCi.highlights", art: <span>🚀</span> },
   { id: "brainlab", label: "Brain.Lab", art: <span>🧠</span> },
@@ -71,6 +76,13 @@ export default function Desktop() {
   const [topZ, setTopZ] = useState(10);
   const [startOpen, setStartOpen] = useState(false);
   const [tipOpen, setTipOpen] = useState(true);
+  const [workFocus, setWorkFocus] = useState<string | undefined>(undefined);
+
+  // Open work.explorer focused on a specific case study (used by System Map).
+  function openProject(projectId: string) {
+    setWorkFocus(projectId);
+    open("work");
+  }
 
   function open(id: AppId) {
     setOpenWindows((prev) => {
@@ -169,7 +181,7 @@ export default function Desktop() {
             onClose={() => close(w.id)}
             onMinimize={() => minimize(w.id)}
           >
-            {renderApp(w.id, open)}
+            {renderApp(w.id, open, openProject, workFocus)}
           </Window>
         );
       })}
@@ -207,12 +219,19 @@ export default function Desktop() {
   );
 }
 
-function renderApp(id: AppId, open: (id: AppId) => void) {
+function renderApp(
+  id: AppId,
+  open: (id: AppId) => void,
+  openProject: (projectId: string) => void,
+  workFocus?: string,
+) {
   switch (id) {
     case "welcome":
       return <Welcome onOpenWork={() => open("work")} />;
     case "work":
-      return <WorkExplorer />;
+      return <WorkExplorer focusId={workFocus} />;
+    case "systemmap":
+      return <SystemMapWindow onOpen={openProject} />;
     case "soci":
       return <SOCiHighlights />;
     case "spill":

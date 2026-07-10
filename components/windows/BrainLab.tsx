@@ -30,7 +30,7 @@ export default function BrainLab() {
     <div className="-m-3">
       <div className="xp-addressbar">
         <span style={{ color: "#666" }}>Address</span>
-        <input value="C:\Users\Princess\ABRC\brain-lab" readOnly />
+        <input value="C:\Users\Mariah\ABRC\brain-lab" readOnly />
       </div>
       <div className="xp-tabs">
         <button

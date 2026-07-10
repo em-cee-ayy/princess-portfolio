@@ -5,17 +5,17 @@ export type TriviaQ = {
   reveal: string;
 };
 
-// Princess — feel free to swap any of these with real personal trivia
+// Mariah — feel free to swap any of these with real personal trivia
 export const trivia: TriviaQ[] = [
   {
-    q: "What's Princess's professional 'origin story' undergrad in?",
+    q: "What's Mariah's professional 'origin story' undergrad in?",
     options: ["Computer Science", "Marketing", "Psychology / Neuroscience", "Design"],
     answer: 2,
     reveal:
       "Psych/neuro 🧠 — which is the through-line of literally every portfolio piece.",
   },
   {
-    q: "What's the personal brand Princess is building?",
+    q: "What's the personal brand Mariah is building?",
     options: ["Brain Cafe", "ABRC (Anti Brain Rot Club)", "Mind Garden", "Vibe Engineer"],
     answer: 1,
     reveal:
@@ -41,11 +41,11 @@ export const trivia: TriviaQ[] = [
       "Attention Restoration Theory — trails scored on fascination, extent, being-away, compatibility.",
   },
   {
-    q: "What company does Princess currently work at?",
+    q: "What company does Mariah currently work at?",
     options: ["Anthropic", "SOCi", "Notion", "Pinterest"],
     answer: 1,
     reveal:
-      "SOCi — Sr. Product Engineer. Also runs Claude/AI training webinars for the whole company alongside VPs + CTO.",
+      "SOCi — Sr. Product Engineer. Also designs + leads SOCi's company-wide AI training program alongside VPs + CTO, and shipped SOCi Sage (internal Slack-native AI assistant).",
   },
   {
     q: "Which product does the Phantom PRD target?",
@@ -55,7 +55,7 @@ export const trivia: TriviaQ[] = [
       "Character.AI — most psychologically rich + ethically loaded target, most impressive to an AI PM evaluator.",
   },
   {
-    q: "What's Princess's long-game career target?",
+    q: "What's Mariah's long-game career target?",
     options: [
       "Staff engineer at a FAANG",
       "AI Technical Product Leader → CPO",

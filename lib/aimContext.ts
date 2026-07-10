@@ -16,18 +16,19 @@ Contact: mariah.c.anderson@gmail.com · linkedin.com/in/mariahanderson · github
 Brand: Founder of ABRC (Anti Brain Rot Club) - AI, neuroscience, intentional tech use. Tagline: "stop rotting, start living."
 
 == SUMMARY ==
-Product engineer and AI builder with a foundation in psychology, UX, and full-stack development. Specializes in translating complex data systems into scalable product strategy. Bridge between engineering, data science, and product leadership. Background in digital marketing strategy + consumer behavior, deep interest in privacy-compliant, data-driven targeting systems.
+Product engineer and AI builder with a foundation in psychology, UX, and full-stack development. Core thesis: I build cognitive-state-aware products that treat cognitive state as a first-class input — built end to end (research → design system → API contract → shipped code) and reasoned about in loops and second-order effects. Lead company-wide AI enablement and ship internal AI products at SOCi. Specialize in translating complex data systems into scalable product strategy; a bridge between engineering, data science, and product leadership. Background in digital marketing strategy + consumer behavior, with deep interest in privacy-compliant, data-driven targeting systems. Keywords: adaptive interfaces, systems thinking, closed feedback loops, AI product strategy, LLM API design, structured output contracts, design systems, design tokens, state architecture, attention restoration theory, cognitive load, roadmap influence, north star metric.
 
 == EXPERIENCE ==
 
 Senior Product Engineer — SOCi (2022 – Present)
 - Led cross-functional collaboration between Product, Engineering, Design to identify platform gaps and shape product strategy
 - Investigated complex platform issues across APIs, databases, application layers using SQL, JavaScript, PHP, Python, backend debugging
-- Analyzed large behavioral datasets (user interaction signals, API event logs, support trend data) — contributing to a 55% reduction in resolution time and directly influencing roadmap prioritization
+- Surfaced the systemic product gaps others missed in SOCi's behavioral data (user interaction signals, API event logs, support trend data) — the analysis informed the fixes that cut resolution time 55%, and leadership reprioritized the roadmap based on it
 - Acted as technical liaison between Engineering and Product leadership, translating system-level insights into product requirements + architectural recommendations
 - Partnered with PMs to surface recurring platform issues and prioritize reliability, performance, and UX improvements
 - Mentored + onboarded new hires, establishing technical workflows and product collaboration standards
-- Designed + ran company-wide Claude / AI training webinars alongside VPs and the CTO
+- Design and lead SOCi's company-wide AI training program — Claude workshops for engineers, PMs, and execs, run alongside our VPs and the CTO — translating capabilities into role-specific workflows
+- Shipped SOCi Sage, an internal Slack-native AI assistant that puts company knowledge and Claude-powered workflows where teams already work
 - Co-built an internal LMS with Governance + Security to operationalize responsible AI use (ISO 42001-aligned)
 - Recognized by leadership (incl. CTO) for AI-native instincts + cross-functional impact
 
@@ -79,6 +80,7 @@ export const APP_INDEX = `
 The portfolio site has these openable windows (the app/window id is in [brackets]).
 When the user asks for a link to a section, suggest the matching window id by using the literal token "[open:work]" etc. on a line of its own — the UI will turn it into a clickable button.
 
+- [systemmap] System Map — how the 4 projects relate: one loop (sense → classify → adapt → learn), four layers (interface, environment, design, governance)
 - [work] work.explorer — the 4 case studies (BrainMode, Happy Trails AI, ABRC, Phantom PRD)
 - [soci] SOCi Highlights — extra-credit SOCi work (Claude webinars, LMS, CTO recognition)
 - [brainlab] Brain Lab — live Claude tools: cognitive load scorer + brain state check-in

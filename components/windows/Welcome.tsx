@@ -26,16 +26,24 @@ export default function Welcome({ onOpenWork }: Props) {
       <p className="mt-3">
         an intentional blend of retro interfaces, contemporary metaphors, and AI
         tools brought this experience to life. but the through-line is the
-        thesis i've been building toward in every project:{" "}
+        thesis behind every project here:{" "}
         <strong>
-          technology should work WITH the human brain, not against it.
-        </strong>
+          i build products that treat cognitive state as a first-class input.
+        </strong>{" "}
+        every one runs the same loop — sense the user&apos;s state, classify it
+        with AI, adapt the experience, feed the outcome back into the next
+        decision. brainmode runs that loop at the interface layer, happy trails
+        at the environment layer, and the phantom prd asks what we owe users
+        when we run it at scale.
       </p>
       <p className="mt-3">
-        i'm a sr. product engineer at SOCi with a psychology + neuroscience
-        background, building toward an AI-native product leadership role. four
-        pieces in this portfolio, four roles they target — all unified by a
-        psych-forward, AI-native creative philosophy.
+        i&apos;m a senior product engineer with a psychology degree, a ux/ui
+        certification, and a habit of connecting them. at soci i lead
+        company-wide ai training and ship internal ai products; outside work i
+        build cognitive-state-aware products end to end — research → design
+        system → api contract → shipped code. the throughline: i think in loops
+        and second-order effects. if a design decision doesn&apos;t account for
+        what it teaches the user to do next, it isn&apos;t finished.
       </p>
       <p className="mt-3">
         double-click <strong>work.explorer</strong> to see the case studies, or{" "}

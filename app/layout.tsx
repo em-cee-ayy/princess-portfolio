@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Princess.exe — Portfolio",
+  title: "Mariah.exe — Portfolio",
   description:
-    "Princess (Mariah) Anderson — Sr. Product Engineer building toward AI Technical Product Leadership. Psych-powered, AI-native, brain-friendly.",
+    "Mariah Anderson — Sr. Product Engineer building toward AI Technical Product Leadership. I build products that treat cognitive state as a first-class input.",
 };
 
 export default function RootLayout({

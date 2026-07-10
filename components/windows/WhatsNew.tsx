@@ -20,7 +20,7 @@ export default function WhatsNew() {
     <div className="-m-3">
       <div className="xp-addressbar">
         <span style={{ color: "#666" }}>Address</span>
-        <input value="C:\Users\Princess\whats-new\" readOnly />
+        <input value="C:\Users\Mariah\whats-new\" readOnly />
       </div>
 
       {/* Filter bar */}
@@ -133,7 +133,7 @@ export default function WhatsNew() {
         </div>
 
         <div className="mt-5 p-3 border-l-4 border-[#0a3cc4] bg-[#eef3fb] text-[11px]">
-          <strong>psst (for Princess):</strong> add new entries in{" "}
+          <strong>psst (for Mariah):</strong> add new entries in{" "}
           <code className="bg-white px-1">lib/updates.ts</code>. drop photos in{" "}
           <code className="bg-white px-1">/public/updates/</code> and reference them
           like <code className="bg-white px-1">/updates/your-pic.jpg</code>.

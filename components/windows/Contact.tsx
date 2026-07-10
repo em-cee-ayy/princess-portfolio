@@ -5,7 +5,7 @@ export default function Contact() {
     <div className="-m-3">
       <div className="xp-addressbar">
         <span style={{ color: "#666" }}>Address</span>
-        <input value="C:\Users\Princess\contact.txt" readOnly />
+        <input value="C:\Users\Mariah\contact.txt" readOnly />
       </div>
       <div
         className="bg-white border border-[#999] p-4"

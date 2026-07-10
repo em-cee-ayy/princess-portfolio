@@ -3,6 +3,29 @@
 @tailwind utilities;
 
 :root {
+  /* ── xp chrome tokens ─────────────────────────── */
+  --xp-chrome:        #ece9d8;
+  --xp-chrome-border: #0831d9;
+  --xp-inset-border:  #7f9db9;
+  --xp-title-a: #0058ee;  --xp-title-b: #3593ff;
+  --xp-title-c: #288eff;
+  --xp-start-a: #399b3a;  --xp-start-b: #144d15;
+  --xp-select:  #316ac5;
+  --xp-link:    #0a3cc4;
+
+  /* ── abrc brand tokens (the real system under the chrome) ─── */
+  --abrc-cream:      #F5EFE0;
+  --abrc-yellow:     #F5D547;
+  --abrc-terracotta: #D94F3D;
+  --abrc-lime:       #B8D96E;
+  --abrc-plum:       #2D1B33;
+  --abrc-sky:        #8BBEE8;
+
+  /* ── project layer accents (one thesis, three layers) ─── */
+  --layer-interface:   #4D8EFF; /* brainmode */
+  --layer-environment: #D08B5B; /* happy trails · ART token */
+  --layer-governance:  #1B998B; /* phantom prd */
+
   --xp-bg: linear-gradient(180deg, #5b9bd5 0%, #84b8e8 35%, #c2e0f5 60%, #7cb86b 60%, #4d8a3e 100%);
 }
 
@@ -41,14 +64,14 @@ body {
 
 /* XP window chrome */
 .xp-window {
-  background: #ece9d8;
-  border: 1px solid #0831d9;
+  background: var(--xp-chrome);
+  border: 1px solid var(--xp-chrome-border);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
   font-family: "MS Sans Serif", Tahoma, sans-serif;
 }
 
 .xp-titlebar {
-  background: linear-gradient(180deg, #0058ee 0%, #3593ff 8%, #288eff 40%, #0058ee 100%);
+  background: linear-gradient(180deg, var(--xp-title-a) 0%, var(--xp-title-b) 8%, var(--xp-title-c) 40%, var(--xp-title-a) 100%);
   color: #fff;
   font-weight: bold;
   font-size: 12px;
@@ -100,7 +123,7 @@ body {
 
 .xp-content {
   padding: 12px;
-  background: #ece9d8;
+  background: var(--xp-chrome);
   font-size: 12px;
   color: #000;
 }
@@ -130,7 +153,7 @@ body {
 /* Inset content area like a textbox */
 .xp-inset {
   background: #fff;
-  border: 1px solid #7f9db9;
+  border: 1px solid var(--xp-inset-border);
   box-shadow: inset 1px 1px 0 #0a0a0a33;
   padding: 6px 8px;
 }
@@ -153,7 +176,7 @@ body {
 .xp-start-btn {
   height: 30px;
   padding: 0 22px 0 12px;
-  background: linear-gradient(180deg, #399b3a 0%, #279129 18%, #1d7a1e 80%, #144d15 100%);
+  background: linear-gradient(180deg, var(--xp-start-a) 0%, #279129 18%, #1d7a1e 80%, var(--xp-start-b) 100%);
   color: #fff;
   font-weight: bold;
   font-style: italic;
@@ -334,7 +357,7 @@ body {
 .xp-addressbar input {
   flex: 1;
   background: #fff;
-  border: 1px solid #7f9db9;
+  border: 1px solid var(--xp-inset-border);
   padding: 2px 6px;
   font-family: inherit;
   font-size: 11px;
@@ -360,11 +383,102 @@ body {
 
 /* Links */
 a.xp-link {
-  color: #0a3cc4;
+  color: var(--xp-link);
   text-decoration: underline;
 }
+/* link-hover is ABRC terracotta — a brand decision, now named as one */
 a.xp-link:hover {
-  color: #d94f3d;
+  color: var(--abrc-terracotta);
+}
+
+/* ── system loop strip (shared across all project tabs) ───────────
+   one component, per-project tokens: --sys-accent + --sys-active
+   are set inline per project, everything else is the shared system. */
+.sys-loop {
+  margin: 0 0 8px;
+  padding: 12px 14px;
+  border: 1px solid rgba(14, 14, 16, 0.14);
+  border-radius: 10px;
+  background: rgba(14, 14, 16, 0.02);
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+}
+.sys-loop-kicker {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  opacity: 0.6;
+  margin: 0 0 10px;
+}
+.sys-track {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+.sys-node {
+  flex: 1 1 120px;
+  display: grid;
+  gap: 1px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(14, 14, 16, 0.03);
+  position: relative;
+}
+.sys-node:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.4;
+  font-size: 12px;
+}
+.sys-node .sys-step {
+  font-size: 9px;
+  opacity: 0.5;
+  letter-spacing: 0.1em;
+}
+.sys-node strong {
+  font-size: 12px;
+}
+.sys-node .sys-desc {
+  font-size: 10px;
+  opacity: 0.7;
+  line-height: 1.25;
+}
+.sys-node[data-active="true"] {
+  outline: 2px solid var(--sys-accent, #4d8eff);
+  background: color-mix(in srgb, var(--sys-accent, #4d8eff) 14%, transparent);
+}
+.sys-layers {
+  margin: 12px 0 0;
+  font-size: 11px;
+  opacity: 0.85;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.sys-layer-chip {
+  background: none;
+  border: none;
+  padding: 1px 4px;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--xp-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.sys-layer-chip.current {
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: default;
+  border-left: 3px solid var(--sys-accent, #4d8eff);
+  padding-left: 6px;
 }
 
 /* Pixel-ish heading font for novelty */
@@ -374,7 +488,7 @@ a.xp-link:hover {
 
 /* Selection */
 ::selection {
-  background: #316ac5;
+  background: var(--xp-select);
   color: #fff;
 }
 

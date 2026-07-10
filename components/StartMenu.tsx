@@ -7,6 +7,7 @@ type StartMenuProps = {
 };
 
 const APPS: { id: string; label: string; icon: string }[] = [
+  { id: "systemmap", label: "System Map", icon: "🗺️" },
   { id: "work", label: "work.explorer", icon: "💼" },
   { id: "soci", label: "SOCi Highlights", icon: "🚀" },
   { id: "brainlab", label: "Brain Lab", icon: "🧠" },
@@ -52,7 +53,7 @@ export default function StartMenu({ open, onClose, onOpenApp }: StartMenuProps) 
             textShadow: "1px 1px 0 rgba(0,0,0,0.4)",
           }}
         >
-          princess (mariah)
+          mariah
           <div style={{ fontSize: 10, fontStyle: "normal", opacity: 0.85 }}>
             sr. product engineer · soci · abrc
           </div>

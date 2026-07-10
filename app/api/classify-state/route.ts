@@ -1,9 +1,9 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
+import { askClaudeJSON, requireKey } from "@/lib/claude";
 
 export const runtime = "nodejs";
 
-const SYSTEM = `You are the BrainMode classifier — a cognitive state router built by Princess Anderson. Given a user's 90-second check-in (energy, valence, focus, stress, context), classify them into ONE of these 6 brain states and explain why.
+const SYSTEM = `You are the BrainMode classifier — a cognitive state router built by Mariah Anderson. Given a user's 90-second check-in (energy, valence, focus, stress, context), classify them into ONE of these 6 brain states and explain why.
 
 The 6 states + tone:
 - "flow"     — deep, focused, energized + positive
@@ -29,52 +29,74 @@ Return STRICT JSON with this exact shape:
 
 Voice: lowercase casual, hype + nurturing, confident. No corporate energy.`;
 
-export async function POST(req: Request) {
-  try {
-    const checkin = await req.json();
-    if (!process.env.ANTHROPIC_API_KEY) {
-      return NextResponse.json(
-        { error: "ANTHROPIC_API_KEY missing in .env.local" },
-        { status: 500 },
-      );
+/** Validate the check-in at the system boundary before we interpolate it. */
+function validateCheckin(body: unknown): { ok: true; value: Checkin } | { ok: false; error: string } {
+  if (typeof body !== "object" || body === null) {
+    return { ok: false, error: "check-in body required" };
+  }
+  const b = body as Record<string, unknown>;
+  const scale = (v: unknown, name: string) => {
+    const n = Number(v);
+    if (!Number.isFinite(n) || n < 1 || n > 5) {
+      throw new Error(`${name} must be a number 1-5`);
     }
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    return n;
+  };
+  try {
+    return {
+      ok: true,
+      value: {
+        energy: scale(b.energy, "energy"),
+        valence: scale(b.valence, "valence"),
+        focus: scale(b.focus, "focus"),
+        stress: scale(b.stress, "stress"),
+        timeOfDay: typeof b.timeOfDay === "string" ? b.timeOfDay : "unspecified",
+        notes: typeof b.notes === "string" ? b.notes : "",
+      },
+    };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "invalid check-in" };
+  }
+}
 
-    const userMsg = `Here is the user's 90-second check-in (1-5 scales unless noted):
+type Checkin = {
+  energy: number;
+  valence: number;
+  focus: number;
+  stress: number;
+  timeOfDay: string;
+  notes: string;
+};
 
-- Energy (1=depleted, 5=wired): ${checkin.energy}
-- Valence (1=negative mood, 5=positive mood): ${checkin.valence}
-- Focus (1=scattered, 5=locked in): ${checkin.focus}
-- Stress (1=calm, 5=overwhelmed): ${checkin.stress}
-- Time of day: ${checkin.timeOfDay}
-- Notes from user (free text): "${(checkin.notes || "").slice(0, 400)}"
+function buildCheckinPrompt(c: Checkin): string {
+  return `Here is the user's 90-second check-in (1-5 scales unless noted):
+
+- Energy (1=depleted, 5=wired): ${c.energy}
+- Valence (1=negative mood, 5=positive mood): ${c.valence}
+- Focus (1=scattered, 5=locked in): ${c.focus}
+- Stress (1=calm, 5=overwhelmed): ${c.stress}
+- Time of day: ${c.timeOfDay}
+- Notes from user (free text): "${c.notes.slice(0, 400)}"
 
 Classify and respond with JSON only.`;
+}
 
-    const resp = await client.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: 800,
-      system: SYSTEM,
-      messages: [{ role: "user", content: userMsg }],
-    });
+export async function POST(req: Request) {
+  try {
+    const keyErr = requireKey();
+    if (keyErr) return keyErr;
 
-    const raw = resp.content
-      .filter((b) => b.type === "text")
-      .map((b) => (b as { text: string }).text)
-      .join("\n")
-      .trim();
-
-    const cleaned = raw.replace(/^```(?:json)?/i, "").replace(/```$/i, "").trim();
-    let parsed: unknown;
-    try {
-      parsed = JSON.parse(cleaned);
-    } catch {
-      return NextResponse.json(
-        { error: "Claude returned non-JSON", raw },
-        { status: 502 },
-      );
+    const parsed = validateCheckin(await req.json());
+    if (!parsed.ok) {
+      return NextResponse.json({ error: parsed.error }, { status: 400 });
     }
-    return NextResponse.json(parsed);
+
+    const { data, raw, error } = await askClaudeJSON({
+      system: SYSTEM,
+      user: buildCheckinPrompt(parsed.value),
+    });
+    if (error) return NextResponse.json({ error, raw }, { status: 502 });
+    return NextResponse.json(data);
   } catch (err) {
     const message = err instanceof Error ? err.message : "unknown";
     return NextResponse.json({ error: message }, { status: 500 });

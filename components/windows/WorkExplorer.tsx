@@ -1,17 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { caseStudies } from "@/lib/caseStudies";
+import SystemLoopStrip from "@/components/SystemLoopStrip";
 
-export default function WorkExplorer() {
+export default function WorkExplorer({ focusId }: { focusId?: string }) {
   const [activeId, setActiveId] = useState(caseStudies[0].id);
   const active = caseStudies.find((c) => c.id === activeId)!;
+
+  // System Map (or any external caller) can focus a specific case study.
+  useEffect(() => {
+    if (focusId && caseStudies.some((c) => c.id === focusId)) {
+      setActiveId(focusId);
+    }
+  }, [focusId]);
 
   return (
     <div className="-m-3">
       <div className="xp-addressbar">
         <span style={{ color: "#666" }}>Address</span>
-        <input value={`C:\\Users\\Princess\\Portfolio\\${active.id}`} readOnly />
+        <input value={`C:\\Users\\Mariah\\Portfolio\\${active.id}`} readOnly />
       </div>
       <div className="xp-tabs">
         {caseStudies.map((c) => (
@@ -27,6 +35,8 @@ export default function WorkExplorer() {
       </div>
 
       <div className="bg-white border border-[#999] p-4" style={{ minHeight: 380 }}>
+        <SystemLoopStrip activeId={activeId} onSelect={setActiveId} />
+
         <div className="serif" style={{ fontSize: 22, lineHeight: 1.15 }}>
           {active.emoji} {active.title}
         </div>

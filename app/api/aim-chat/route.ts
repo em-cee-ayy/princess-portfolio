@@ -1,6 +1,6 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 import { FULL_CONTEXT, APP_INDEX } from "@/lib/aimContext";
+import { askClaudeText, requireKey } from "@/lib/claude";
 
 export const runtime = "nodejs";
 
@@ -38,8 +38,9 @@ it ranks hikes by your cognitive + nervous system state, not just fitness level.
 
 User: tell me about her 55% number
 You:
-at SOCi she analyzed large behavioral datasets (user interaction signals, API event logs, support trend data) and that work contributed to a 55% reduction in resolution time — also directly influenced roadmap prioritization.
-basically: she found the systemic gaps everyone else missed.
+she found the systemic gaps everyone else missed in soci's behavioral data — user interaction signals, api event logs, support trends.
+her analysis informed the fixes that cut resolution time 55%, and leadership reprioritized the roadmap based on it.
+basically: the finding was hers, and it moved the roadmap.
 
 User: what's her github?
 You:
@@ -53,17 +54,10 @@ export async function POST(req: Request) {
     if (!Array.isArray(messages)) {
       return NextResponse.json({ error: "messages array required" }, { status: 400 });
     }
-    if (!process.env.ANTHROPIC_API_KEY) {
-      return NextResponse.json(
-        { error: "ANTHROPIC_API_KEY missing in .env.local" },
-        { status: 500 },
-      );
-    }
+    const keyErr = requireKey();
+    if (keyErr) return keyErr;
 
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const resp = await client.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: 700,
+    const text = await askClaudeText({
       system: SYSTEM,
       messages: messages
         .filter(
@@ -76,12 +70,6 @@ export async function POST(req: Request) {
           content: m.content,
         })),
     });
-
-    const text = resp.content
-      .filter((b) => b.type === "text")
-      .map((b) => (b as { text: string }).text)
-      .join("\n")
-      .trim();
 
     return NextResponse.json({ text });
   } catch (err) {

@@ -7,7 +7,7 @@ export default function SOCiHighlights() {
     <div className="-m-3">
       <div className="xp-addressbar">
         <span style={{ color: "#666" }}>Address</span>
-        <input value="C:\Users\Princess\SOCi\highlights.log" readOnly />
+        <input value="C:\Users\Mariah\SOCi\highlights.log" readOnly />
       </div>
 
       <div className="bg-white border border-[#999] p-4">

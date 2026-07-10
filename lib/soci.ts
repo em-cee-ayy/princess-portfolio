@@ -7,10 +7,16 @@ export type SOCiHighlight = {
 
 export const soci: SOCiHighlight[] = [
   {
-    title: "Claude / AI training webinars (company-wide)",
-    subtitle: "Led with VPs + the CTO",
-    body: "Designed and ran company-wide Claude/AI training webinars at SOCi, partnering directly with VPs and the CTO. Translated dense AI capabilities into role-specific workflows for engineering, product, support, and revenue teams — bridging the gap between 'AI is cool' and 'AI lives in our daily workflow.'",
-    tags: ["enablement", "executive partnership", "AI adoption"],
+    title: "SOCi's company-wide AI training program",
+    subtitle: "Designed + led with VPs + the CTO",
+    body: "I design and lead SOCi's company-wide AI training program — Claude workshops for engineers, PMs, and execs, run alongside our VPs and the CTO. The program translates dense AI capabilities into role-specific workflows for engineering, product, support, and revenue teams — bridging the gap between 'AI is cool' and 'AI lives in our daily workflow.'",
+    tags: ["AI enablement", "executive partnership", "AI adoption"],
+  },
+  {
+    title: "SOCi Sage — internal Slack-native AI assistant",
+    subtitle: "Shipped internal AI product",
+    body: "Shipped SOCi Sage, an internal Slack-native AI assistant that puts company knowledge and Claude-powered workflows where teams already work. Instead of a separate tool to adopt, the assistance shows up in the surface people are already in — the difference between an AI product teams use and one they forget.",
+    tags: ["internal product", "Claude", "Slack", "AI adoption"],
   },
   {
     title: "LMS build with Governance & Security",

@@ -5,7 +5,7 @@ export default function Resume() {
     <div className="-m-3">
       <div className="xp-addressbar">
         <span style={{ color: "#666" }}>Address</span>
-        <input value="C:\Users\Princess\resume.doc" readOnly />
+        <input value="C:\Users\Mariah\resume.doc" readOnly />
       </div>
 
       {/* Download bar */}
@@ -65,9 +65,11 @@ export default function Resume() {
           product leadership, with a track record of diagnosing systemic
           platform issues and shaping roadmap direction. Background in digital
           marketing strategy and consumer behavior, with deep interest in
-          privacy-compliant, data-driven targeting systems. Currently building
-          toward an AI-native Product Manager / Technical Product Leadership
-          role — and, eventually, CPO.
+          privacy-compliant, data-driven targeting systems. The throughline
+          across every project: I build cognitive-state-aware products that
+          treat cognitive state as a first-class input, and I think in loops and
+          second-order effects. Currently building toward an AI-native Product
+          Manager / Technical Product Leadership role — and, eventually, CPO.
         </Section>
 
         <Section label="EXPERIENCE">
@@ -86,11 +88,11 @@ export default function Resume() {
               debugging tools.
             </li>
             <li>
-              Analyzed large behavioral datasets — user interaction signals, API
-              event logs, support trend data — to identify systemic product
-              gaps, contributing to a{" "}
-              <strong>55% reduction in resolution time</strong> and directly
-              influencing roadmap prioritization.
+              Surfaced the systemic product gaps others missed in SOCi&apos;s
+              behavioral data — user interaction signals, API event logs,
+              support trend data — informing the fixes that{" "}
+              <strong>cut resolution time 55%</strong>; leadership reprioritized
+              the roadmap based on the analysis.
             </li>
             <li>
               Acted as a technical liaison between Engineering and Product
@@ -108,10 +110,15 @@ export default function Resume() {
               team.
             </li>
             <li>
-              Designed + ran company-wide Claude / AI training webinars
-              alongside VPs and the CTO — translating capabilities into
-              role-specific workflows for engineering, product, support, and
-              revenue teams.
+              Design and lead SOCi&apos;s company-wide AI training program —
+              Claude workshops for engineers, PMs, and execs, run alongside our
+              VPs and the CTO — translating capabilities into role-specific
+              workflows for engineering, product, support, and revenue teams.
+            </li>
+            <li>
+              Shipped <strong>SOCi Sage</strong>, an internal Slack-native AI
+              assistant that puts company knowledge and Claude-powered workflows
+              where teams already work.
             </li>
             <li>
               Co-built an internal LMS with Governance + Security to
@@ -199,15 +206,15 @@ export default function Resume() {
         <Section label="SKILLS">
           <SkillRow
             label="AI & Technical"
-            body="SQL, JavaScript, HTML/CSS, API integrations, Python, PHP, debugging, data analysis, React, Tailwind, Next.js, Firebase, Supabase, behavioral data analysis, AI/ML product integration, data flows, behavioral datasets, system analysis, Anthropic + OpenAI APIs"
+            body="AI product strategy, LLM API design, structured output contracts, RAG pipelines, AI enablement / AI training leadership, SQL, JavaScript, HTML/CSS, API integrations, Python, PHP, debugging, data analysis, React, Tailwind, Next.js, Firebase, Supabase, behavioral data analysis, AI/ML product integration, Anthropic + OpenAI APIs"
           />
           <SkillRow
             label="Product Management"
-            body="Roadmapping, user research, stakeholder collaboration, Agile/Scrum, metrics-driven decisions, consumer app lifecycle, research-to-feature translation, privacy-first product strategy, data partnership evaluation"
+            body="Systems thinking, second-order effects, closed feedback loops, roadmap influence, metrics frameworks, north star metric, roadmapping, user research, stakeholder collaboration, Agile/Scrum, metrics-driven decisions, consumer app lifecycle, research-to-feature translation, privacy-first product strategy"
           />
           <SkillRow
             label="UX & Human-Centered Design"
-            body="Usability testing, prototyping, wireframing, information architecture, neuro-informed design rationale, accessibility"
+            body="Cognitive-state-aware products, adaptive interfaces, design systems, design tokens, state architecture, behavioral psychology, attention restoration theory, cognitive load, usability testing, prototyping, wireframing, information architecture, neuro-informed design rationale, accessibility"
           />
           <SkillRow
             label="Tools"

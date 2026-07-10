@@ -10,6 +10,7 @@ import FriendlyTip from "./FriendlyTip";
 import Welcome from "./windows/Welcome";
 import WorkExplorer from "./windows/WorkExplorer";
 import SystemMapWindow from "./windows/SystemMapWindow";
+import GovernanceFramework from "./windows/GovernanceFramework";
 import SOCiHighlights from "./windows/SOCiHighlights";
 import SpillTheBeans from "./windows/SpillTheBeans";
 import BrainLab from "./windows/BrainLab";
@@ -23,6 +24,7 @@ type AppId =
   | "welcome"
   | "work"
   | "systemmap"
+  | "governance"
   | "soci"
   | "spill"
   | "brainlab"
@@ -45,6 +47,7 @@ const APP_META: Record<
   welcome: { title: "welcome", icon: "👋", width: 500, x: 80, y: 70 },
   work: { title: "work.explorer — Mariah's Portfolio", icon: "💼", width: 760, height: 560, x: 180, y: 80 },
   systemmap: { title: "System Map.exe", icon: "🗺️", width: 440, height: 380, x: 140, y: 90 },
+  governance: { title: "AI Governance Framework", icon: "🛡️", width: 780, height: 620, x: 160, y: 60 },
   soci: { title: "SOCi Highlights", icon: "🚀", width: 640, height: 540, x: 220, y: 100 },
   spill: { title: "Spill the Beans!", icon: "🫘", width: 520, height: 480, x: 260, y: 90 },
   brainlab: { title: "Brain Lab — ABRC", icon: "🧠", width: 700, height: 600, x: 200, y: 70 },
@@ -59,6 +62,7 @@ const ICONS: { id: AppId; label: string; art: React.ReactNode }[] = [
   // portfolio cluster — the map sits next to the case studies it maps
   { id: "systemmap", label: "System.Map", art: <span>🗺️</span> },
   { id: "work", label: "work.explorer", art: <span>💼</span> },
+  { id: "governance", label: "AI.Governance", art: <span>🛡️</span> },
   { id: "soci", label: "SOCi.highlights", art: <span>🚀</span> },
   { id: "brainlab", label: "Brain.Lab", art: <span>🧠</span> },
   { id: "aim-buddy", label: "AIM.exe", art: <span>🏃</span> },
@@ -229,9 +233,16 @@ function renderApp(
     case "welcome":
       return <Welcome onOpenWork={() => open("work")} />;
     case "work":
-      return <WorkExplorer focusId={workFocus} />;
+      return (
+        <WorkExplorer
+          focusId={workFocus}
+          onOpenApp={(id) => open(id as AppId)}
+        />
+      );
     case "systemmap":
       return <SystemMapWindow onOpen={openProject} />;
+    case "governance":
+      return <GovernanceFramework onOpenApp={() => openProject("phantomprd")} />;
     case "soci":
       return <SOCiHighlights />;
     case "spill":

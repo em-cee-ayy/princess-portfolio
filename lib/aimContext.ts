@@ -82,6 +82,7 @@ When the user asks for a link to a section, suggest the matching window id by us
 
 - [systemmap] System Map — how the 4 projects relate: one loop (sense → classify → adapt → learn), four layers (interface, environment, design, governance)
 - [work] work.explorer — the 4 case studies (BrainMode, Happy Trails AI, ABRC, Phantom PRD)
+- [governance] AI Governance Framework — publishable applied-governance artifact (companion to the Phantom PRD): governing an AI visit-summary feature rollout in a healthtech SaaS, with ISO 42001 / NIST AI RMF, a risk register, and compliance-as-code
 - [soci] SOCi Highlights — extra-credit SOCi work (Claude webinars, LMS, CTO recognition)
 - [brainlab] Brain Lab — live Claude tools: cognitive load scorer + brain state check-in
 - [spill] Spill the Beans — trivia mini-game about Mariah
@@ -91,6 +92,14 @@ When the user asks for a link to a section, suggest the matching window id by us
 - [welcome] Welcome — intro window
 `;
 
+const GOVERNANCE = `
+AI Governance Framework — "Governing AI feature rollout in a healthtech SaaS" (open with [governance]).
+A publishable applied-governance artifact and the companion to the Phantom PRD: the Phantom PRD governs the psychology of an AI product; this one governs the pipeline. Written as the deliverable an AI Governance PM would hand a healthtech engineering org on day 30 (professional sentence-case register).
+Premise: a mid-size healthtech SaaS wants to ship AI-drafted visit summaries (model drafts a structured summary from a visit transcript; clinician reviews, edits, and signs before anything touches the record).
+Four artifacts, one pipeline: (1) a use-case impact assessment template (ISO 42001 Annex A.5-aligned), (2) a risk-tiered approval workflow that gates CI/CD via an immutable audit trail (compliance-as-code: an ai-manifest.json in the repo re-classifies risk on change), (3) a risk register (hallucinated clinical content, PHI exposure, prompt injection, silent model drift, resource abuse — each with technical + product mitigations), (4) a flagship feature spec where compliance requirements ARE product requirements with owners + acceptance criteria.
+Frameworks applied: NIST AI RMF (govern → map → measure → manage), ISO 42001, EU AI Act risk-tier awareness, HIPAA-adjacent PHI handling, zero trust, CIA triad.
+Thesis tie-in: it's the same sense → classify → adapt → learn loop applied to an org's AI pipeline — governance as the reason a company is allowed to accelerate, not the brake.`;
+
 export const FULL_CONTEXT = `${RESUME}
 
 == SOCI HIGHLIGHTS (extra-credit work) ==
@@ -98,4 +107,7 @@ ${SOCI_EXTRAS}
 
 == PORTFOLIO CASE STUDIES ==
 ${PORTFOLIO}
+
+== APPLIED GOVERNANCE ARTIFACT ==
+${GOVERNANCE}
 `;

@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import { caseStudies } from "@/lib/caseStudies";
 import SystemLoopStrip from "@/components/SystemLoopStrip";
 
-export default function WorkExplorer({ focusId }: { focusId?: string }) {
+export default function WorkExplorer({
+  focusId,
+  onOpenApp,
+}: {
+  focusId?: string;
+  onOpenApp?: (id: string) => void;
+}) {
   const [activeId, setActiveId] = useState(caseStudies[0].id);
   const active = caseStudies.find((c) => c.id === activeId)!;
 
@@ -49,6 +55,32 @@ export default function WorkExplorer({ focusId }: { focusId?: string }) {
           <strong>The elevator pitch.</strong>
           <p className="mt-1">{active.pitch}</p>
         </div>
+
+        {active.id === "phantomprd" && onOpenApp && (
+          <div
+            className="mt-3 p-3 text-[12px]"
+            style={{ background: "#eef7f5", borderLeft: "4px solid #1B998B" }}
+          >
+            <strong>Companion artifact.</strong> The publishable governance
+            deliverable behind this piece — a full applied framework for shipping
+            AI features in a healthtech SaaS.{" "}
+            <button
+              onClick={() => onOpenApp("governance")}
+              className="xp-link"
+              style={{
+                background: "none",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+                color: "#0a3cc4",
+                textDecoration: "underline",
+                fontSize: 12,
+              }}
+            >
+              open the AI Governance Framework →
+            </button>
+          </div>
+        )}
 
         <Section label="The problem" body={active.problem} />
         <Section label="The insight" body={active.insight} />

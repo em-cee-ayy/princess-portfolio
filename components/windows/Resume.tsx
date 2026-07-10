@@ -49,10 +49,37 @@ export default function Resume() {
             SR. PRODUCT ENGINEER · AI PRODUCT LEADER
           </div>
           <div className="text-[11px] mt-1.5 leading-snug">
-            mariah.c.anderson@gmail.com · linkedin.com/in/mariahanderson
+            <a className="xp-link" href="mailto:mariah.c.anderson@gmail.com">
+              mariah.c.anderson@gmail.com
+            </a>{" "}
+            ·{" "}
+            <a
+              className="xp-link"
+              href="https://www.linkedin.com/in/mariahanderson"
+              target="_blank"
+              rel="noreferrer"
+            >
+              linkedin.com/in/mariahanderson
+            </a>
             <br />
-            github.com/em-cee-ayy · mariahtheoptimist.framer.website · ABRC
-            founder
+            <a
+              className="xp-link"
+              href="https://github.com/em-cee-ayy"
+              target="_blank"
+              rel="noreferrer"
+            >
+              github.com/em-cee-ayy
+            </a>{" "}
+            ·{" "}
+            <a
+              className="xp-link"
+              href="https://mariahtheoptimist.framer.website"
+              target="_blank"
+              rel="noreferrer"
+            >
+              mariahtheoptimist.framer.website
+            </a>{" "}
+            · ABRC founder
           </div>
         </div>
 

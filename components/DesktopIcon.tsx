@@ -6,14 +6,26 @@ type IconProps = {
   label: string;
   art: React.ReactNode;
   onOpen: () => void;
+  style?: React.CSSProperties;
+  onMouseDown?: (e: React.MouseEvent) => void;
+  dragging?: boolean;
 };
 
-export default function DesktopIcon({ label, art, onOpen }: IconProps) {
+export default function DesktopIcon({
+  label,
+  art,
+  onOpen,
+  style,
+  onMouseDown,
+  dragging,
+}: IconProps) {
   const [selected, setSelected] = useState(false);
 
   return (
     <div
       className={`desktop-icon ${selected ? "selected" : ""}`}
+      style={{ cursor: dragging ? "grabbing" : "grab", ...style }}
+      onMouseDown={onMouseDown}
       onClick={(e) => {
         e.stopPropagation();
         setSelected(true);

@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Window from "./Window";
 import DesktopIcon from "./DesktopIcon";
 import Taskbar from "./Taskbar";
 import StartMenu from "./StartMenu";
 import FriendlyTip from "./FriendlyTip";
+import { playStartup } from "@/lib/aimSounds";
 
 import Welcome from "./windows/Welcome";
 import WorkExplorer from "./windows/WorkExplorer";
@@ -84,7 +85,93 @@ export default function Desktop() {
   // Render the date only after mount so SSR (server timezone) and client
   // (visitor timezone) can't disagree and trip a hydration mismatch.
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+
+  // Draggable desktop icons — positions computed after mount into 2 columns
+  // anchored to the right edge, then free to be dragged anywhere.
+  const [iconPos, setIconPos] = useState<Record<string, { x: number; y: number }>>({});
+  const [draggingIcon, setDraggingIcon] = useState<string | null>(null);
+  const iconDrag = useRef<{
+    id: string;
+    startX: number;
+    startY: number;
+    origX: number;
+    origY: number;
+    moved: boolean;
+  } | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+    const ICON_W = 88;
+    const ROW_H = 92;
+    const TOP = 44;
+    const RIGHT = 16;
+    const GAP = 4;
+    const xRight = window.innerWidth - RIGHT - ICON_W;
+    const xLeft = xRight - ICON_W - GAP;
+    const next: Record<string, { x: number; y: number }> = {};
+    ICONS.forEach((ic, i) => {
+      const col = i % 2;
+      const row = Math.floor(i / 2);
+      next[ic.id] = { x: col === 0 ? xLeft : xRight, y: TOP + row * ROW_H };
+    });
+    setIconPos(next);
+  }, []);
+
+  useEffect(() => {
+    function move(e: MouseEvent) {
+      const d = iconDrag.current;
+      if (!d) return;
+      const dx = e.clientX - d.startX;
+      const dy = e.clientY - d.startY;
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) d.moved = true;
+      setIconPos((prev) => ({
+        ...prev,
+        [d.id]: { x: Math.max(0, d.origX + dx), y: Math.max(40, d.origY + dy) },
+      }));
+    }
+    function up() {
+      iconDrag.current = null;
+      setDraggingIcon(null);
+    }
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", up);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseup", up);
+    };
+  }, []);
+
+  // Play the boot chime on the first user interaction (browsers block audio
+  // until a gesture, so it fires on first click/keypress rather than on load).
+  useEffect(() => {
+    let played = false;
+    function boot() {
+      if (played) return;
+      played = true;
+      playStartup();
+      window.removeEventListener("pointerdown", boot);
+      window.removeEventListener("keydown", boot);
+    }
+    window.addEventListener("pointerdown", boot);
+    window.addEventListener("keydown", boot);
+    return () => {
+      window.removeEventListener("pointerdown", boot);
+      window.removeEventListener("keydown", boot);
+    };
+  }, []);
+
+  function startIconDrag(id: string, e: React.MouseEvent) {
+    const cur = iconPos[id] || { x: e.clientX, y: e.clientY };
+    iconDrag.current = {
+      id,
+      startX: e.clientX,
+      startY: e.clientY,
+      origX: cur.x,
+      origY: cur.y,
+      moved: false,
+    };
+    setDraggingIcon(id);
+  }
 
   // Open work.explorer focused on a specific case study (used by System Map).
   function openProject(projectId: string) {
@@ -154,20 +241,31 @@ export default function Desktop() {
         </div>
       </div>
 
-      {/* Desktop icon grid (right side, like reference) */}
-      <div
-        className="fixed flex flex-col gap-1"
-        style={{ right: 20, top: 40, zIndex: 1 }}
-      >
-        {ICONS.map((ic, i) => (
-          <DesktopIcon
-            key={i}
-            label={ic.label}
-            art={ic.art}
-            onOpen={() => open(ic.id)}
-          />
-        ))}
-      </div>
+      {/* Desktop icons — draggable, laid out in 2 columns after mount */}
+      {mounted && (
+        <div className="fixed inset-0" style={{ zIndex: 1, pointerEvents: "none" }}>
+          {ICONS.map((ic) => {
+            const p = iconPos[ic.id];
+            if (!p) return null;
+            return (
+              <DesktopIcon
+                key={ic.id}
+                label={ic.label}
+                art={ic.art}
+                onOpen={() => open(ic.id)}
+                onMouseDown={(e) => startIconDrag(ic.id, e)}
+                dragging={draggingIcon === ic.id}
+                style={{
+                  position: "absolute",
+                  left: p.x,
+                  top: p.y,
+                  pointerEvents: "auto",
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
 
       {/* Windows */}
       {openWindows.map((w) => {

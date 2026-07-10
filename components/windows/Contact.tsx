@@ -47,14 +47,35 @@ export default function Contact() {
             </a>
           </li>
           <li>
+            🌐 portfolio —{" "}
+            <a
+              className="xp-link"
+              href="https://mariahtheoptimist.framer.website"
+              target="_blank"
+              rel="noreferrer"
+            >
+              mariahtheoptimist.framer.website
+            </a>
+          </li>
+          <li>
             ✨ substack (ABRC) —{" "}
-            <a className="xp-link" href="#" target="_blank" rel="noreferrer">
+            <a
+              className="xp-link"
+              href="https://antibrainrotclub.substack.com"
+              target="_blank"
+              rel="noreferrer"
+            >
               antibrainrotclub.substack.com
             </a>
           </li>
           <li>
             🎬 tiktok —{" "}
-            <a className="xp-link" href="#" target="_blank" rel="noreferrer">
+            <a
+              className="xp-link"
+              href="https://www.tiktok.com/@whoismariahhhh"
+              target="_blank"
+              rel="noreferrer"
+            >
               @whoismariahhhh
             </a>
           </li>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import WindowsLogo from "./WindowsLogo";
 
 type TaskbarProps = {
   items: {
@@ -33,7 +34,7 @@ export default function Taskbar({ items, onItemClick, onStartClick }: TaskbarPro
   return (
     <div className="xp-taskbar">
       <button className="xp-start-btn" onClick={onStartClick}>
-        <span style={{ fontSize: 14 }}>🪟</span> start
+        <WindowsLogo size={18} /> start
       </button>
       <div className="flex-1 flex items-center overflow-x-auto px-1">
         {items.map((it) => (

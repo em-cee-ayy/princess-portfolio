@@ -181,6 +181,36 @@ export default function AIMChat({ onOpenApp }: Props) {
   );
 }
 
+// Match full URLs and bare domains (allowlisted TLDs so "next.js" etc. don't match).
+const URL_RE =
+  /((?:https?:\/\/|www\.)[^\s<]+|[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9-]+)*\.(?:com|org|net|io|dev|app|ai|website)(?:\/[^\s<]*)?)/gi;
+
+/** Turn URLs / known bare domains in chat text into clickable links. */
+function linkify(text: string): React.ReactNode[] {
+  const out: React.ReactNode[] = [];
+  let last = 0;
+  let key = 0;
+  for (const m of text.matchAll(URL_RE)) {
+    const raw = m[0];
+    const idx = m.index ?? 0;
+    // Skip email hosts (e.g. the "gmail.com" inside an address).
+    if (idx > 0 && text[idx - 1] === "@") continue;
+    if (idx > last) out.push(text.slice(last, idx));
+    const trimmed = raw.replace(/[.,);:]+$/, "");
+    const trailing = raw.slice(trimmed.length);
+    const href = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+    out.push(
+      <a key={key++} className="xp-link" href={href} target="_blank" rel="noreferrer">
+        {trimmed}
+      </a>,
+    );
+    if (trailing) out.push(trailing);
+    last = idx + raw.length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+
 function Bubble({
   msg,
   onOpenApp,
@@ -202,7 +232,7 @@ function Bubble({
       <div className="text-[11px]" style={{ color }}>
         <strong>{name}:</strong>{" "}
         <span style={{ color: "#000" }} className="whitespace-pre-wrap">
-          {cleaned}
+          {linkify(cleaned)}
         </span>
       </div>
       {openMatches.length > 0 && (

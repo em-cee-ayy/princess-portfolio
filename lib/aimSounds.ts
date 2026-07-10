@@ -39,6 +39,19 @@ function tone(freq: number, dur: number, startOffset = 0, type: OscillatorType =
   osc.stop(t0 + dur + 0.05);
 }
 
+// Boot chime: a warm ascending "power-on" fanfare — an homage to the Windows
+// startup sound, synthesized (no copyrighted clip shipped).
+export function playStartup() {
+  // low warm pad underneath
+  tone(261.63, 1.6, 0.0, "sine", 0.10); // C4
+  tone(392.0, 1.6, 0.0, "sine", 0.09); // G4
+  // ascending shimmer on top
+  tone(523.25, 1.2, 0.12, "triangle", 0.12); // C5
+  tone(659.25, 1.1, 0.34, "triangle", 0.12); // E5
+  tone(783.99, 1.3, 0.56, "triangle", 0.13); // G5
+  tone(1046.5, 1.6, 0.78, "sine", 0.12); // C6
+}
+
 // AIM sign-on: classic "doot-doot-doot-DOOT" ascending chime
 export function playSignOn() {
   tone(523.25, 0.12, 0.0, "triangle"); // C5

@@ -1,175 +1,147 @@
-# princess.exe — a 100% vibe-coded portfolio
+# mariah.exe — a 100% vibe-coded portfolio
 
-A Windows-XP-inspired desktop portfolio for Princess (Mariah) Anderson — Sr. Product Engineer at SOCi, building toward AI Technical Product Leadership.
+Hola! This is the source for my Windows-XP-inspired desktop portfolio. I'm Mariah Anderson — Sr. Product Engineer at SOCi, AI Enablement & Governance Lead, Psych Graduate turned Engineer, currently building toward AI Product Leadership.
 
-Four portfolio pieces. Four roles. One thesis: **technology should work WITH the human brain, not against it.**
+The whole site runs on one idea: **technology should work WITH the human brain, not against it.** Every project on the desktop is that idea at a different layer — 1 loop (sense → classify → adapt → learn), 4 layers: interface, environment, design system, governance.
 
----
+Also it looks like Windows XP, because the early internet raised me, and I miss when computers were fun.
 
-## what's in here
+## What's on the desktop
 
-- **work.explorer** — the 4 case studies (BrainMode, Happy Trails AI, ABRC, The Phantom PRD), each in a tabbed window
-- **SOCi Highlights** — the extra-credit work inside SOCi (Claude webinars, LMS, governance, CTO recognition)
-- **AIM (chat with me)** 🏃 — classic AOL Buddy List → double-click Mariah to start an IM with `mariahtheoptimist`. Claude-powered, knows your resume + portfolio, can deep-link to other windows. Plays the AIM sign-on chime on open.
-- **what's.new** 📓 — scrapbook feed of recent travel, projects, and life moments. Curated via `lib/updates.ts`.
-- **Spill the Beans** — multiple-choice trivia mini-game about Mariah
-- **Brain Lab** — two live Claude-powered tools:
-  - 🪞 **Cognitive Load Scorer** — paste any text, get a brain rot vs. brain growth score
-  - 🧭 **Brain State Check-in** — 90-second sliders → Claude routes you to 1 of 6 cognitive states
-- **Resume** — typed-out resume + a Download Resume.pdf button (PDF lives at `/public/Mariah-Anderson-resume.pdf`)
-- **Contact** — email, LinkedIn, GitHub, Substack, TikTok
-- Friendly XP-style popup, draggable + maximizable windows, start menu, working taskbar with clock
+- **work.explorer** 💼 — The 4 case studies (BrainMode, Happy Trails AI, ABRC, The Phantom PRD), tabbed like it's 2003
+- **governance.msc** 🛡️ — The AI governance side of my work: SOCi Sage (an internal RAG assistant governed from day one), the company-wide AI enablement program, and an applied healthtech governance framework — risk tables and all. yes, the `.msc` extension is a management-console joke. No, I will not apologize
+- **System Map** 🗺️ — A window that maps how everything here connects
+- **SOCi Highlights** 🚀 — What I've built inside SOCi beyond the job description: Claude training webinars run with our VPs + CTO, the ISO 42001-aligned LMS, the recognition that followed
+- **AIM (chat with me)** 🏃 — A real AOL-style buddy list. Double-click me to open an IM with mariahtheoptimist (it's Claude under the hood, it knows my resume and projects, and it can deep-link you to any window on the desktop). Sign-on chime included, obviously
+- **Brain Lab** 🧠 — 2 live Claude tools you can actually use:
+  - 🪞 cognitive load scorer — paste anything and get a brain rot vs. brain growth score
+  - 🧭 brain state check-in — 90 seconds of sliders → Claude routes you to 1 of 6 cognitive states (the same classifier that powers BrainMode)
+- **what's.new** 📓 — A low-stakes scrapbook of travel, projects, and life lately
+- **Spill the Beans** 🫘 — Trivia about me. Get a low score and it will gently roast you
+- **Resume** 📄 — The full resume in-window, plus a Download PDF button
+- **Contact** 📧 — Email, LinkedIn, GitHub, Substack, TikTok
 
----
+Plus the little things that make it feel like a real desktop: draggable + maximizable windows, a working taskbar with a clock, a start menu, and a Friendly Tip popup that behaves exactly like you remember.
 
-## quick start
+## Quick Start
 
 ```bash
 # 1. install
 npm install
 
-# 2. add your Anthropic key (only needed for Brain Lab)
+# 2. add your Anthropic key (powers Brain Lab + AIM chat)
 cp .env.local.example .env.local
-# then open .env.local and paste your key from https://console.anthropic.com/
+# paste your key from https://console.anthropic.com/
 
 # 3. run
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) — the desktop boots with the Welcome window + Friendly Tip popup.
+open [http://localhost:3000](http://localhost:3000) — the desktop boots with the Welcome window and the Friendly Tip.
 
----
+### env vars
 
-## env vars
+| key | required? | notes |
+| --- | --- | --- |
+| `ANTHROPIC_API_KEY` | for Brain Lab + AIM chat | both fall back to a friendly error if it's missing — everything else works without it |
 
-| key                  | required?                              | notes                                            |
-| -------------------- | -------------------------------------- | ------------------------------------------------ |
-| `ANTHROPIC_API_KEY`  | for Brain Lab + AIM chat (recommended) | Both surfaces fall back to a friendly error if missing — the rest of the site works without it. |
+## File Map
 
----
-
-## file map
-
-```
-portfolio/
+```text
+.
 ├── app/
 │   ├── layout.tsx
 │   ├── page.tsx                  # mounts <Desktop />
-│   ├── globals.css               # all XP styling lives here
+│   ├── globals.css               # all the XP chrome + design tokens
 │   └── api/
-│       ├── aim-chat/route.ts         # Claude → AIM-style Q&A about Mariah
-│       ├── classify-state/route.ts   # Claude → BrainMode 6-state classifier
+│       ├── aim-chat/route.ts         # Claude → AIM-style Q&A about me
+│       ├── classify-state/route.ts   # Claude → the 6-state BrainMode classifier
 │       └── cognitive-load/route.ts   # Claude → ABRC brain rot / growth scorer
 ├── components/
-│   ├── Desktop.tsx               # the whole desktop orchestrator
+│   ├── Desktop.tsx               # the desktop orchestrator
 │   ├── Window.tsx                # draggable, maximizable XP window
+│   ├── SystemLoopStrip.tsx       # the sense → classify → adapt → learn strip
 │   ├── DesktopIcon.tsx
 │   ├── Taskbar.tsx
 │   ├── StartMenu.tsx
 │   ├── FriendlyTip.tsx
 │   └── windows/
 │       ├── Welcome.tsx
-│       ├── WorkExplorer.tsx      # 4 case studies, tabbed
+│       ├── WorkExplorer.tsx      # the 4 case studies, tabbed
+│       ├── GovernanceFramework.tsx  # governance.msc — sage, enablement, healthtech framework
+│       ├── SystemMapWindow.tsx   # how everything connects
 │       ├── SOCiHighlights.tsx
+│       ├── BrainLab.tsx          # both live Claude tools
+│       ├── AIMBuddyList.tsx
+│       ├── AIMChat.tsx
+│       ├── WhatsNew.tsx
 │       ├── SpillTheBeans.tsx
-│       ├── BrainLab.tsx          # both Claude tools live here
-│       ├── AIMBuddyList.tsx      # AIM "Mariah is online" buddy list
-│       ├── AIMChat.tsx           # Claude-powered IM window
-│       ├── WhatsNew.tsx          # scrapbook feed
 │       ├── Contact.tsx
 │       └── Resume.tsx
 ├── lib/
-│   ├── caseStudies.ts            # ← edit your 4 case studies here
-│   ├── soci.ts                   # ← edit your SOCi highlights here
-│   ├── trivia.ts                 # ← edit Spill the Beans questions here
-│   ├── updates.ts                # ← what's.new feed entries
-│   ├── aimContext.ts             # what the AIM chat "knows" about Mariah
-│   └── aimSounds.ts              # programmatic AIM sign-on / message chimes
-└── public/
-    ├── Mariah-Anderson-resume.pdf   # the downloadable PDF (already included)
-    └── updates/                     # drop your photos for what's.new here
+│   ├── claude.ts                 # shared Anthropic client + strict-JSON helper (one client, three routes)
+│   ├── caseStudies.ts            # ← the 4 case studies live here (pure data)
+│   ├── soci.ts                   # ← SOCi highlights
+│   ├── aimContext.ts             # single source of truth for what the AIM chat knows
+│   ├── trivia.ts                 # Spill the Beans questions
+│   ├── updates.ts                # what's.new feed entries
+│   └── aimSounds.ts              # programmatic AIM chimes
+├── public/
+│   ├── Mariah-Anderson-resume.pdf
+│   ├── updates/                  # photos for what's.new
+│   └── case-studies/
+│       ├── brainmode/
+│       ├── happytrails/
+│       ├── abrc/
+│       └── phantomprd/
+├── tailwind.config.js            # ABRC + XP palettes live in theme.extend.colors
+├── next.config.js
+├── package.json
+├── tsconfig.json
+└── postcss.config.js
 ```
 
----
+## Customizing (mostly notes to future me)
 
-## customizing
+### content lives in `lib/`, not in JSX
 
-### swap in your real content
-
-- **`lib/caseStudies.ts`** — edit pitch / problem / insight / decisions / features / stack / outcomes / status for each piece. Pure data, no JSX, fast to update.
-- **`lib/soci.ts`** — edit SOCi highlights (titles, subtitles, tags).
-- **`lib/trivia.ts`** — swap in real personal trivia. The scoring + verdicts adapt automatically.
-- **`lib/updates.ts`** — add entries for the **what's.new** scrapbook feed. Each entry has `title`, `date`, `caption`, optional `image`, optional `emoji`, `tags`, and an optional `link`.
-- **`lib/aimContext.ts`** — single source of truth for what the AIM chat knows. It auto-imports from `caseStudies.ts` and `soci.ts`, plus a static resume string. Update the resume string here when your resume changes so the AIM chat stays accurate.
-
-### adding photos to what's.new
-
-1. Drop your image in `/public/updates/` (e.g. `/public/updates/iceland-2026.jpg`)
-2. Add an entry to `lib/updates.ts`:
-   ```ts
-   {
-     id: "iceland-trip",
-     title: "iceland reset 🧊",
-     date: "March 2026",
-     caption: "field-tested ART theory on a glacier walk. fascination ✅ being-away ✅",
-     image: "/updates/iceland-2026.jpg",
-     tags: ["travel", "abrc"],
-   }
-   ```
-3. External URLs (Imgur, Cloudinary, S3, etc.) also work — just put the full URL in the `image` field.
+- `lib/caseStudies.ts` — pitch / problem / insight / decisions / stack / status for each of the 4 pieces
+- `lib/soci.ts` — the SOCi highlight cards
+- `lib/aimContext.ts` — everything the AIM chat knows. it auto-imports from `caseStudies.ts` and `soci.ts` plus a static resume string — when the resume changes, update the string here too, or the chatbot starts telling people old stories
+- `lib/trivia.ts` — swap questions freely; scoring + verdicts adapt
+- `lib/updates.ts` — what's.new entries. drop photos in `/public/updates/` and reference like `/updates/your-pic.jpg` (external URLs work too)
 
 ### swapping the resume PDF
 
-Replace `/public/Mariah-Anderson-resume.pdf` with your latest export. The Download button in the Resume window auto-points at this path — no code changes needed.
+replace `/public/Mariah-Anderson-resume.pdf` with the latest export — the Download button auto-points at that path. keep the in-window resume, the PDF, and `aimContext.ts` saying the same thing. (three surfaces, one story. i learned this the hard way.)
 
-### links + socials
+### adding a new window
 
-- **`components/windows/Contact.tsx`** — drop in your real GitHub, Substack, TikTok handles.
-- **`components/windows/Resume.tsx`** — update job rows, education, stack.
+1. create `components/windows/MyThing.tsx`
+2. add an `AppId` + `APP_META` entry + `renderApp` case in `Desktop.tsx`
+3. optional: add it to `ICONS` and the `StartMenu.tsx` `APPS` list
 
 ### colors / vibes
 
-- Window chrome, taskbar, and Bliss-style background live in **`app/globals.css`**.
-- ABRC + XP palettes are also in `tailwind.config.js` (`theme.extend.colors.abrc.*` and `xp.*`) if you want to lean more retro-cream or fully ABRC-branded later.
+XP chrome + Bliss background + design tokens are in `app/globals.css`; the ABRC and XP palettes are also in `tailwind.config.js` if i ever want to go full retro-cream.
 
-### add a new window
-
-1. Create `components/windows/MyApp.tsx` and export a default React component.
-2. Add an `AppId` + meta entry in `components/Desktop.tsx` (`APP_META` and `renderApp`).
-3. Optional: add to the `ICONS` array (right-side desktop) and `StartMenu.tsx`'s `APPS` list.
-
----
-
-## deploy
-
-Deploy in 2 minutes on Vercel:
+## Deploy
 
 ```bash
-# install vercel CLI once
-npm i -g vercel
-
-# from this directory
-vercel
+npm i -g vercel   # once
+vercel            # from this directory
 ```
 
-Set `ANTHROPIC_API_KEY` in the Vercel dashboard → Project → Settings → Environment Variables.
+set `ANTHROPIC_API_KEY` in Vercel → Project → Settings → Environment Variables.
 
----
+## Tech Stack
 
-## tech stack
+Next.js 14 (App Router) · React 18 · TypeScript · Tailwind CSS · Framer Motion · Anthropic SDK
 
-`Next.js 14 (App Router)` · `React 18` · `TypeScript` · `Tailwind CSS` · `Framer Motion` (installed, ready for animation upgrades) · `Anthropic SDK`
+## Why It's Built Like This
 
----
+Honestly? Because a PDF portfolio can't prove anything about how you think, but this can:
 
-## why this design
-
-This portfolio is itself a small case study. Three deliberate choices:
-
-1. **Retro shell, serious content.** The XP-style desktop is delight + nostalgia (low-arousal positive affect → users explore more). The content inside the windows is full case studies — same rigor as a Notion doc, more memorable container.
-2. **Interactivity over scrolling.** Each window is its own "tab" of you. Recruiters and PMs can opt in to depth instead of being drowned in a long scroll.
-3. **AI as a working demo, not a sticker.** Brain Lab actually runs Claude in production. The cognitive load scorer is also a tiny preview of what ABRC v1 will ship with — so the portfolio doubles as a proof-of-concept for one of its own case studies.
-
----
-
-stop rotting, start living 🧠✨
+1. **retro shell, serious content.** the XP desktop is nostalgia doing real work — delight lowers guardedness, and people explore more when they're having fun. the windows themselves hold full case studies with the same rigor as any strategy doc. memorable container, no compromise on substance.
+2. **the structure is the argument.** the System Map window, the loop strip on every project, the shared `lib/claude.ts` behind all 3 API routes — the site doesn't just say i think in systems, it's assembled like one. if you view source, that's on purpose. hi. 👋
+3. **AI as a working demo, not a sticker.** Brain Lab runs Claude in production, the AIM chat is a live agent with my actual context, and the governance window shows the guardrails i'd put around all of it. building AI products and governing them responsibly are the same skill — this repo tries to be evidence of both.

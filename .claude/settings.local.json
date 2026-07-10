@@ -7,7 +7,13 @@
       "Bash(gh repo *)",
       "Bash(grep -iE 'env\\\\.local$|secret')",
       "Bash(git commit -q -m 'adding functionality for images + videos *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(open \"/Users/mariahanderson/Library/Application Support/Claude/local-agent-mode-sessions/91c908c1-d972-4a26-bd4e-5ebca5339457/2c115de3-a420-4195-9acf-5de7a78c2095/local_4c1bd2b6-4449-40d5-9a7a-5cc5cc244ffa/outputs/portfolio\")",
+      "Bash(ls -la ~/Documents/portfolio 2>/dev/null && echo \"---EXISTS---\" || echo \"---DOES NOT EXIST, safe to move---\")",
+      "Read(//Users/mariahanderson/Documents/**)",
+      "Bash(mv \"/Users/mariahanderson/Library/Application Support/Claude/local-agent-mode-sessions/91c908c1-d972-4a26-bd4e-5ebca5339457/2c115de3-a420-4195-9acf-5de7a78c2095/local_4c1bd2b6-4449-40d5-9a7a-5cc5cc244ffa/outputs/portfolio\" ~/Documents/portfolio)",
+      "Bash(git -C ~/Documents/portfolio status --short)",
+      "Bash(git -C ~/Documents/portfolio remote -v)"
     ]
   }
 }

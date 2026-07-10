@@ -15,14 +15,20 @@ type TaskbarProps = {
 };
 
 export default function Taskbar({ items, onItemClick, onStartClick }: TaskbarProps) {
-  const [now, setNow] = useState(new Date());
+  // Start null so the server render and the first client render agree (empty),
+  // then fill the clock in after mount — otherwise a minute rolling over
+  // between SSR and hydration triggers a hydration mismatch.
+  const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
+    setNow(new Date());
     const t = setInterval(() => setNow(new Date()), 30_000);
     return () => clearInterval(t);
   }, []);
 
-  const time = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  const time = now
+    ? now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })
+    : "";
 
   return (
     <div className="xp-taskbar">

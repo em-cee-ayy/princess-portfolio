@@ -82,7 +82,7 @@ When the user asks for a link to a section, suggest the matching window id by us
 
 - [systemmap] System Map — how the 4 projects relate: one loop (sense → classify → adapt → learn), four layers (interface, environment, design, governance)
 - [work] work.explorer — the 4 case studies (BrainMode, Happy Trails AI, ABRC, Phantom PRD)
-- [governance] AI Governance Framework — publishable applied-governance artifact (companion to the Phantom PRD): governing an AI visit-summary feature rollout in a healthtech SaaS, with ISO 42001 / NIST AI RMF, a risk register, and compliance-as-code
+- [governance] governance.msc (the AI Governance Framework) — publishable applied-governance artifact (companion to the Phantom PRD): governing an AI visit-summary feature rollout in a healthtech SaaS, with ISO 42001 / NIST AI RMF, a risk register, and compliance-as-code
 - [soci] SOCi Highlights — extra-credit SOCi work (Claude webinars, LMS, CTO recognition)
 - [brainlab] Brain Lab — live Claude tools: cognitive load scorer + brain state check-in
 - [spill] Spill the Beans — trivia mini-game about Mariah

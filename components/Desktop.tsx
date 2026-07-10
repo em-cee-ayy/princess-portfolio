@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Window from "./Window";
 import DesktopIcon from "./DesktopIcon";
 import Taskbar from "./Taskbar";
@@ -47,7 +47,7 @@ const APP_META: Record<
   welcome: { title: "welcome", icon: "👋", width: 500, x: 80, y: 70 },
   work: { title: "work.explorer — Mariah's Portfolio", icon: "💼", width: 760, height: 560, x: 180, y: 80 },
   systemmap: { title: "System Map.exe", icon: "🗺️", width: 440, height: 380, x: 140, y: 90 },
-  governance: { title: "AI Governance Framework", icon: "🛡️", width: 780, height: 620, x: 160, y: 60 },
+  governance: { title: "governance.msc", icon: "🛡️", width: 780, height: 620, x: 160, y: 60 },
   soci: { title: "SOCi Highlights", icon: "🚀", width: 640, height: 540, x: 220, y: 100 },
   spill: { title: "Spill the Beans!", icon: "🫘", width: 520, height: 480, x: 260, y: 90 },
   brainlab: { title: "Brain Lab — ABRC", icon: "🧠", width: 700, height: 600, x: 200, y: 70 },
@@ -62,7 +62,7 @@ const ICONS: { id: AppId; label: string; art: React.ReactNode }[] = [
   // portfolio cluster — the map sits next to the case studies it maps
   { id: "systemmap", label: "System.Map", art: <span>🗺️</span> },
   { id: "work", label: "work.explorer", art: <span>💼</span> },
-  { id: "governance", label: "AI.Governance", art: <span>🛡️</span> },
+  { id: "governance", label: "governance.msc", art: <span>🛡️</span> },
   { id: "soci", label: "SOCi.highlights", art: <span>🚀</span> },
   { id: "brainlab", label: "Brain.Lab", art: <span>🧠</span> },
   { id: "aim-buddy", label: "AIM.exe", art: <span>🏃</span> },
@@ -81,6 +81,10 @@ export default function Desktop() {
   const [startOpen, setStartOpen] = useState(false);
   const [tipOpen, setTipOpen] = useState(true);
   const [workFocus, setWorkFocus] = useState<string | undefined>(undefined);
+  // Render the date only after mount so SSR (server timezone) and client
+  // (visitor timezone) can't disagree and trip a hydration mismatch.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   // Open work.explorer focused on a specific case study (used by System Map).
   function openProject(projectId: string) {
@@ -146,7 +150,7 @@ export default function Desktop() {
         <button onClick={() => open("contact")}>Contact</button>
         <button onClick={() => open("resume")}>Resume</button>
         <div style={{ marginLeft: "auto", fontWeight: "normal", fontSize: 11 }}>
-          🎨 ▼ &nbsp; {new Date().toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" })}
+          🎨 ▼ &nbsp; {mounted ? new Date().toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" }) : ""}
         </div>
       </div>
 

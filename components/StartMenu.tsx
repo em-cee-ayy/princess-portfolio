@@ -9,7 +9,7 @@ type StartMenuProps = {
 const APPS: { id: string; label: string; icon: string }[] = [
   { id: "systemmap", label: "System Map", icon: "🗺️" },
   { id: "work", label: "work.explorer", icon: "💼" },
-  { id: "governance", label: "AI Governance Framework", icon: "🛡️" },
+  { id: "governance", label: "governance.msc", icon: "🛡️" },
   { id: "soci", label: "SOCi Highlights", icon: "🚀" },
   { id: "brainlab", label: "Brain Lab", icon: "🧠" },
   { id: "aim-buddy", label: "AIM (chat with me)", icon: "🏃" },

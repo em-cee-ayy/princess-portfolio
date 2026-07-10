@@ -1,6 +1,6 @@
-# mariah.exe — a 100% vibe-coded portfolio
+# The Most Nostalgic Portfolio 
 
-Hola! This is the source for my Windows-XP-inspired desktop portfolio. I'm Mariah Anderson — Sr. Product Engineer at SOCi, AI Enablement & Governance Lead, Psych Graduate turned Engineer, currently building toward AI Product Leadership.
+Hola! This is the source for my Windows-XP-inspired desktop portfolio. I'm Mariah Anderson - Sr. Product Engineer at SOCi, AI Enablement & Governance Lead, Psych Graduate turned Engineer, currently building toward AI Product Leadership.
 
 The whole site runs on one idea: **technology should work WITH the human brain, not against it.** Every project on the desktop is that idea at a different layer — 1 loop (sense → classify → adapt → learn), 4 layers: interface, environment, design system, governance.
 
@@ -8,18 +8,18 @@ Also it looks like Windows XP, because the early internet raised me, and I miss 
 
 ## What's on the desktop
 
-- **work.explorer** 💼 — The 4 case studies (BrainMode, Happy Trails AI, ABRC, The Phantom PRD), tabbed like it's 2003
-- **governance.msc** 🛡️ — The AI governance side of my work: SOCi Sage (an internal RAG assistant governed from day one), the company-wide AI enablement program, and an applied healthtech governance framework — risk tables and all. yes, the `.msc` extension is a management-console joke. No, I will not apologize
-- **System Map** 🗺️ — A window that maps how everything here connects
-- **SOCi Highlights** 🚀 — What I've built inside SOCi beyond the job description: Claude training webinars run with our VPs + CTO, the ISO 42001-aligned LMS, the recognition that followed
-- **AIM (chat with me)** 🏃 — A real AOL-style buddy list. Double-click me to open an IM with mariahtheoptimist (it's Claude under the hood, it knows my resume and projects, and it can deep-link you to any window on the desktop). Sign-on chime included, obviously
-- **Brain Lab** 🧠 — 2 live Claude tools you can actually use:
-  - 🪞 cognitive load scorer — paste anything and get a brain rot vs. brain growth score
-  - 🧭 brain state check-in — 90 seconds of sliders → Claude routes you to 1 of 6 cognitive states (the same classifier that powers BrainMode)
-- **what's.new** 📓 — A low-stakes scrapbook of travel, projects, and life lately
-- **Spill the Beans** 🫘 — Trivia about me. Get a low score and it will gently roast you
-- **Resume** 📄 — The full resume in-window, plus a Download PDF button
-- **Contact** 📧 — Email, LinkedIn, GitHub, Substack, TikTok
+- **work.explorer** 💼 - The 4 case studies (BrainMode, Happy Trails AI, ABRC, The Phantom PRD), tabbed like it's 2003
+- **governance.msc** 🛡️ - The AI governance side of my work: SOCi Sage (an internal RAG assistant governed from day one), the company-wide AI enablement program, and an applied healthtech governance framework — risk tables and all. yes, the `.msc` extension is a management-console joke. No, I will not apologize
+- **System Map** 🗺️ - A window that maps how everything here connects
+- **SOCi Highlights** 🚀 - What I've built inside SOCi beyond the job description: Claude training webinars run with our VPs + CTO, the ISO 42001-aligned LMS, the recognition that followed
+- **AIM (chat with me)** 🏃 - A real AOL-style buddy list. Double-click me to open an IM with mariahtheoptimist (it's Claude under the hood, it knows my resume and projects, and it can deep-link you to any window on the desktop). Sign-on chime included, obviously
+- **Brain Lab** 🧠 - 2 live Claude tools you can actually use:
+  - 🪞 cognitive load scorer - paste anything and get a brain rot vs. brain growth score
+  - 🧭 brain state check-in - 90 seconds of sliders → Claude routes you to 1 of 6 cognitive states (the same classifier that powers BrainMode)
+- **what's.new** 📓 - A low-stakes scrapbook of travel, projects, and life lately
+- **Spill the Beans** 🫘 - Trivia about me. Get a low score and it will gently roast you
+- **Resume** 📄 - The full resume in-window, plus a Download PDF button
+- **Contact** 📧 - Email, LinkedIn, GitHub, Substack, TikTok
 
 Plus the little things that make it feel like a real desktop: draggable + maximizable windows, a working taskbar with a clock, a start menu, and a Friendly Tip popup that behaves exactly like you remember.
 
@@ -142,6 +142,6 @@ Next.js 14 (App Router) · React 18 · TypeScript · Tailwind CSS · Framer Moti
 
 Honestly? Because a PDF portfolio can't prove anything about how you think, but this can:
 
-1. **retro shell, serious content.** the XP desktop is nostalgia doing real work — delight lowers guardedness, and people explore more when they're having fun. the windows themselves hold full case studies with the same rigor as any strategy doc. memorable container, no compromise on substance.
-2. **the structure is the argument.** the System Map window, the loop strip on every project, the shared `lib/claude.ts` behind all 3 API routes — the site doesn't just say i think in systems, it's assembled like one. if you view source, that's on purpose. hi. 👋
-3. **AI as a working demo, not a sticker.** Brain Lab runs Claude in production, the AIM chat is a live agent with my actual context, and the governance window shows the guardrails i'd put around all of it. building AI products and governing them responsibly are the same skill — this repo tries to be evidence of both.
+1. **retro shell, serious content.** the XP desktop is nostalgia doing real work - delight lowers guardedness, and people explore more when they're having fun. the windows themselves hold full case studies with the same rigor as any strategy doc. memorable container, no compromise on substance.
+2. **the structure is the argument.** the System Map window, the loop strip on every project, the shared `lib/claude.ts` behind all 3 API routes - the site doesn't just say i think in systems, it's assembled like one. if you view source, that's on purpose. hi. 👋
+3. **AI as a working demo, not a sticker.** Brain Lab runs Claude in production, the AIM chat is a live agent with my actual context, and the governance window shows the guardrails i'd put around all of it. building AI products and governing them responsibly are the same skill - this repo tries to be evidence of both.

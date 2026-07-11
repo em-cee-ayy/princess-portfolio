@@ -65,6 +65,7 @@ open [http://localhost:3000](http://localhost:3000) — the desktop boots with t
 │   ├── Taskbar.tsx
 │   ├── StartMenu.tsx
 │   ├── FriendlyTip.tsx
+│   ├── WindowsLogo.tsx           # the 4-color Windows flag (Start button)
 │   └── windows/
 │       ├── Welcome.tsx
 │       ├── WorkExplorer.tsx      # the 4 case studies, tabbed
@@ -98,7 +99,8 @@ open [http://localhost:3000](http://localhost:3000) — the desktop boots with t
 ├── next.config.js
 ├── package.json
 ├── tsconfig.json
-└── postcss.config.js
+├── postcss.config.js
+└── .env.local.example            # copy to .env.local, then add your ANTHROPIC_API_KEY
 ```
 
 ## Customizing (mostly notes to future me)

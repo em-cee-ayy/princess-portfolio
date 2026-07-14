@@ -19,7 +19,7 @@ export default function Resume() {
         <div className="text-[12px]">
           <strong>💾 want the original?</strong>{" "}
           <span className="text-[#555]">
-            grab the PDF — same content, in recruiter-friendly format.
+            grab the PDF - same content, in recruiter-friendly format.
           </span>
         </div>
         <a
@@ -85,7 +85,7 @@ export default function Resume() {
 
         <Section label="SUMMARY">
           Product engineer and AI builder with a foundation in psychology, UX,
-          and full-stack development — specializing in translating complex data
+          and full-stack development - specializing in translating complex data
           systems into scalable product strategy. Experienced working with APIs,
           behavioral datasets, and cross-functional teams to drive measurable
           outcomes. Natural bridge between engineering, data science, and
@@ -96,7 +96,7 @@ export default function Resume() {
           across every project: I build cognitive-state-aware products that
           treat cognitive state as a first-class input, and I think in loops and
           second-order effects. Currently building toward an AI-native Product
-          Manager / Technical Product Leadership role — and, eventually, CPO.
+          Manager / Technical Product Leadership role - and, eventually, CPO.
         </Section>
 
         <Section label="EXPERIENCE">
@@ -116,8 +116,8 @@ export default function Resume() {
             </li>
             <li>
               Surfaced the systemic product gaps others missed in SOCi&apos;s
-              behavioral data — user interaction signals, API event logs,
-              support trend data — informing the fixes that{" "}
+              behavioral data - user interaction signals, API event logs,
+              support trend data - informing the fixes that{" "}
               <strong>cut resolution time 55%</strong>; leadership reprioritized
               the roadmap based on the analysis.
             </li>
@@ -137,9 +137,9 @@ export default function Resume() {
               team.
             </li>
             <li>
-              Design and lead SOCi&apos;s company-wide AI training program —
+              Design and lead SOCi&apos;s company-wide AI training program -
               Claude workshops for engineers, PMs, and execs, run alongside our
-              VPs and the CTO — translating capabilities into role-specific
+              VPs and the CTO - translating capabilities into role-specific
               workflows for engineering, product, support, and revenue teams.
             </li>
             <li>
@@ -186,7 +186,7 @@ export default function Resume() {
             <li>
               Built Flux, an AI-powered application integrating behavioral
               signal processing, user state modeling, and real-time API data
-              flows — demonstrating ability to architect complex data systems
+              flows - demonstrating ability to architect complex data systems
               that track, resolve, and activate user context over time.
             </li>
             <li>
@@ -202,27 +202,27 @@ export default function Resume() {
           </Job>
 
           <div className="mt-3 text-[12px]">
-            <strong>Portfolio (4 roles · 4 pieces · one thesis)</strong> — see{" "}
+            <strong>Portfolio (4 roles · 4 pieces · one thesis)</strong> - see{" "}
             <em>work.explorer</em> on the desktop for full case studies:
           </div>
           <ul className="list-disc pl-5 mt-1 text-[12px] space-y-1">
             <li>
-              <strong>🛠️ BrainMode</strong> — cognitive state router (not a task
+              <strong>🛠️ BrainMode</strong> - cognitive state router (not a task
               manager). Next.js · Supabase · Anthropic · Replicate.{" "}
               <em>Product Engineer target.</em>
             </li>
             <li>
-              <strong>🤖 Happy Trails AI</strong> — trail recommendation engine
+              <strong>🤖 Happy Trails AI</strong> - trail recommendation engine
               built on Attention Restoration Theory. FastAPI · Pinecone RAG ·
               Anthropic · Mapbox. <em>AI Engineer target.</em>
             </li>
             <li>
-              <strong>🎨 ABRC</strong> — Anti Brain Rot Club website as a live
+              <strong>🎨 ABRC</strong> - Anti Brain Rot Club website as a live
               neuro-informed design case study, every decision cited.{" "}
               <em>Design Engineer target.</em>
             </li>
             <li>
-              <strong>📋 The Phantom PRD</strong> — unsolicited AI PM strategy
+              <strong>📋 The Phantom PRD</strong> - unsolicited AI PM strategy
               for Character.AI through a behavioral psych lens, including a
               90-second speculative product film.{" "}
               <em>AI Product Manager target.</em>
@@ -276,7 +276,7 @@ export default function Resume() {
 
         <Section label="BRAND + ORIGIN">
           <div className="text-[12px]">
-            Founder of <strong>ABRC — Anti Brain Rot Club</strong>: a personal
+            Founder of <strong>ABRC - Anti Brain Rot Club</strong>: a personal
             brand at the intersection of AI, neuroscience, and intentional tech
             use. Tagline: <em>stop rotting, start living.</em> Publishing in
             public on Substack, TikTok, LinkedIn, and Instagram.
@@ -327,7 +327,7 @@ function Job({
     <div>
       <div className="flex justify-between text-[12px] flex-wrap gap-2">
         <strong>
-          {company} — {title}
+          {company} - {title}
         </strong>
         <span className="italic">{time}</span>
       </div>

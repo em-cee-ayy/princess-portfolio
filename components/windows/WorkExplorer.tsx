@@ -56,13 +56,32 @@ export default function WorkExplorer({
           <p className="mt-1">{active.pitch}</p>
         </div>
 
+        {active.liveUrl && (
+          <div
+            className="mt-3 p-3 text-[12px]"
+            style={{ background: "#f7f4ee", borderLeft: "4px solid #F5D547" }}
+          >
+            <strong>See it live.</strong> A portfolio page for this project is
+            already built out.{" "}
+            <a
+              href={active.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="xp-link"
+              style={{ color: "#0a3cc4", textDecoration: "underline" }}
+            >
+              view the portfolio page here →
+            </a>
+          </div>
+        )}
+
         {active.id === "phantomprd" && onOpenApp && (
           <div
             className="mt-3 p-3 text-[12px]"
             style={{ background: "#eef7f5", borderLeft: "4px solid #1B998B" }}
           >
             <strong>Companion artifact.</strong> The publishable governance
-            deliverable behind this piece — a full applied framework for shipping
+            deliverable behind this piece - a full applied framework for shipping
             AI features in a healthtech SaaS.{" "}
             <button
               onClick={() => onOpenApp("governance")}
@@ -105,11 +124,6 @@ export default function WorkExplorer({
         </div>
 
         <SectionList label="Outcomes + lineage" items={active.outcomes} />
-
-        <div className="mt-4 p-3 border border-dashed border-[#aca899] bg-[#fafafa]" style={{ fontSize: 12 }}>
-          <strong>ABRC content angle.</strong>
-          <div className="mt-1 italic">{active.contentAngle}</div>
-        </div>
       </div>
     </div>
   );

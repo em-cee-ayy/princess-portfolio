@@ -128,7 +128,7 @@ body {
 .xp-content {
   padding: 12px;
   background: var(--xp-chrome);
-  /* Readable body: clean anti-aliased font, larger base, selectable —
+  /* Readable body: clean anti-aliased font, larger base, selectable -
      the pixel chrome (titlebars, taskbar, icons) stays crisp above. */
   font-family: var(--font-content);
   font-size: 13.5px;
@@ -410,7 +410,7 @@ a.xp-link {
   color: var(--xp-link);
   text-decoration: underline;
 }
-/* link-hover is ABRC terracotta — a brand decision, now named as one */
+/* link-hover is ABRC terracotta - a brand decision, now named as one */
 a.xp-link:hover {
   color: var(--abrc-terracotta);
 }

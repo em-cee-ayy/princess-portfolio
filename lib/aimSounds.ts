@@ -1,6 +1,6 @@
 /**
  * Programmatic AIM-style sound effects using Web Audio API.
- * No external audio files needed — synthesized on the fly so we don't
+ * No external audio files needed - synthesized on the fly so we don't
  * have to ship copyrighted .wav clips. Returns void if AudioContext unavailable.
  */
 
@@ -39,7 +39,7 @@ function tone(freq: number, dur: number, startOffset = 0, type: OscillatorType =
   osc.stop(t0 + dur + 0.05);
 }
 
-// Boot chime: a warm ascending "power-on" fanfare — an homage to the Windows
+// Boot chime: a warm ascending "power-on" fanfare - an homage to the Windows
 // startup sound, synthesized (no copyrighted clip shipped).
 export function playStartup() {
   // low warm pad underneath

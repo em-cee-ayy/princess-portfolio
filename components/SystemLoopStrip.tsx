@@ -16,11 +16,11 @@ type LayerConfig = {
   accent: string;
 };
 
-// keyed by case-study id — the single source of "which layer is which"
+// keyed by case-study id - the single source of "which layer is which"
 export const LAYERS: Record<string, LayerConfig> = {
   brainmode: { activeStep: 3, layer: "interface layer", accent: "var(--layer-interface)" },
   happytrails: { activeStep: 2, layer: "environment layer", accent: "var(--layer-environment)" },
-  abrc: { activeStep: 3, layer: "design layer", accent: "var(--abrc-yellow)" },
+  abrc: { activeStep: 1, layer: "design layer", accent: "var(--abrc-yellow)" },
   phantomprd: { activeStep: 4, layer: "governance layer", accent: "var(--layer-governance)" },
 };
 

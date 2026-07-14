@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * System Map.exe — a desktop window that maps the portfolio itself.
+ * System Map.exe - a desktop window that maps the portfolio itself.
  * The XP metaphor makes the relationship literal: an actual window whose
  * job is to show that every project on the desktop runs one loop.
  * Clicking a project opens work.explorer focused on that case study.
@@ -71,7 +71,7 @@ export default function SystemMapWindow({
         >
           <span style={{ minWidth: 130, fontWeight: "bold" }}>{p.name}</span>
           <span style={{ fontSize: 11 }}>
-            {p.layer} — {p.claim}
+            {p.layer} - {p.claim}
           </span>
         </button>
       ))}

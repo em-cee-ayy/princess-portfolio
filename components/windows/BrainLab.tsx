@@ -90,7 +90,7 @@ function Scorer() {
         🪞 cognitive load scorer
       </div>
       <p className="text-[12px] text-[#444] mt-1">
-        paste anything — an article, social post, ad, your own draft — and
+        paste anything - an article, social post, ad, your own draft - and
         Claude scores it through ABRC's neuro-design lens. brain rot vs. brain
         growth.
       </p>

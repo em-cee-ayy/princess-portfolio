@@ -46,21 +46,21 @@ const APP_META: Record<
   { title: string; icon: string; width?: number; height?: number; x?: number; y?: number }
 > = {
   welcome: { title: "welcome", icon: "👋", width: 500, x: 80, y: 70 },
-  work: { title: "work.explorer — Mariah's Portfolio", icon: "💼", width: 760, height: 560, x: 180, y: 80 },
+  work: { title: "work.explorer - Mariah's Portfolio", icon: "💼", width: 760, height: 560, x: 180, y: 80 },
   systemmap: { title: "System Map.exe", icon: "🗺️", width: 440, height: 380, x: 140, y: 90 },
   governance: { title: "governance.msc", icon: "🛡️", width: 780, height: 620, x: 160, y: 60 },
   soci: { title: "SOCi Highlights", icon: "🚀", width: 640, height: 540, x: 220, y: 100 },
   spill: { title: "Spill the Beans!", icon: "🫘", width: 520, height: 480, x: 260, y: 90 },
-  brainlab: { title: "Brain Lab — ABRC", icon: "🧠", width: 700, height: 600, x: 200, y: 70 },
+  brainlab: { title: "Brain Lab - ABRC", icon: "🧠", width: 700, height: 600, x: 200, y: 70 },
   contact: { title: "Contact", icon: "📧", width: 520, height: 380, x: 240, y: 110 },
   resume: { title: "Resume", icon: "📄", width: 720, height: 620, x: 220, y: 60 },
-  "aim-buddy": { title: "AIM — Buddy List", icon: "🏃", width: 280, height: 420, x: 60, y: 80 },
+  "aim-buddy": { title: "AIM - Buddy List", icon: "🏃", width: 280, height: 420, x: 60, y: 80 },
   "aim-chat": { title: "IM with mariahtheoptimist", icon: "💬", width: 520, height: 560, x: 360, y: 90 },
-  whatsnew: { title: "what's.new — Mariah's scrapbook", icon: "📓", width: 680, height: 580, x: 200, y: 80 },
+  whatsnew: { title: "what's.new - Mariah's scrapbook", icon: "📓", width: 680, height: 580, x: 200, y: 80 },
 };
 
 const ICONS: { id: AppId; label: string; art: React.ReactNode }[] = [
-  // portfolio cluster — the map sits next to the case studies it maps
+  // portfolio cluster - the map sits next to the case studies it maps
   { id: "systemmap", label: "System.Map", art: <span>🗺️</span> },
   { id: "work", label: "work.explorer", art: <span>💼</span> },
   { id: "governance", label: "governance.msc", art: <span>🛡️</span> },
@@ -86,7 +86,7 @@ export default function Desktop() {
   // (visitor timezone) can't disagree and trip a hydration mismatch.
   const [mounted, setMounted] = useState(false);
 
-  // Draggable desktop icons — positions computed after mount into 2 columns
+  // Draggable desktop icons - positions computed after mount into 2 columns
   // anchored to the right edge, then free to be dragged anywhere.
   const [iconPos, setIconPos] = useState<Record<string, { x: number; y: number }>>({});
   const [draggingIcon, setDraggingIcon] = useState<string | null>(null);
@@ -130,6 +130,10 @@ export default function Desktop() {
       }));
     }
     function up() {
+      if (iconDrag.current) {
+        document.body.style.cursor = "";
+        document.body.style.userSelect = "";
+      }
       iconDrag.current = null;
       setDraggingIcon(null);
     }
@@ -162,6 +166,9 @@ export default function Desktop() {
 
   function startIconDrag(id: string, e: React.MouseEvent) {
     const cur = iconPos[id] || { x: e.clientX, y: e.clientY };
+    // Persist the "grabbing" hand across the whole drag, not just over the icon.
+    document.body.style.cursor = "grabbing";
+    document.body.style.userSelect = "none";
     iconDrag.current = {
       id,
       startX: e.clientX,
@@ -231,7 +238,7 @@ export default function Desktop() {
     <>
       <div className="bliss-bg" />
 
-      {/* Top menu bar — Contact / Resume shortcuts like the reference */}
+      {/* Top menu bar - Contact / Resume shortcuts like the reference */}
       <div className="xp-topbar">
         <span style={{ marginRight: 12 }}>🖥️</span>
         <button onClick={() => open("contact")}>Contact</button>
@@ -241,7 +248,7 @@ export default function Desktop() {
         </div>
       </div>
 
-      {/* Desktop icons — draggable, laid out in 2 columns after mount */}
+      {/* Desktop icons - draggable, laid out in 2 columns after mount */}
       {mounted && (
         <div className="fixed inset-0" style={{ zIndex: 1, pointerEvents: "none" }}>
           {ICONS.map((ic) => {

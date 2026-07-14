@@ -1,24 +1,25 @@
 /**
- * "What I've been up to" — a curated feed of recent updates,
+ * "What I've been up to" - a curated feed of recent updates,
  * travel snaps, build-in-public moments, etc.
  *
  * HOW TO ADD AN UPDATE:
  *  1. Drop your image in `/public/updates/your-image.jpg`
- *     (or use any URL — `image` accepts external URLs too)
+ *     (or use any URL - `image` accepts external URLs too)
  *  2. Add an entry to the array below.
  *  3. Save. The Updates window will reflect it instantly.
  *
  * Tags: "travel" | "project" | "event" | "abrc" | "soci" | "life"
- *  — used to color the chip; add new tags freely (default color is gray).
+ *  - used to color the chip; add new tags freely (default color is gray).
  */
 
 export type Update = {
   id: string;
   title: string;
-  date: string;          // freeform, e.g. "June 2026" — displayed as-is
+  date: string;          // freeform, e.g. "June 2026" - displayed as-is
   caption: string;       // 1–4 sentences
-  image?: string;        // /public path OR external URL — optional
-  emoji?: string;        // shown if no image
+  image?: string;        // /public path OR external URL - single image
+  images?: string[];     // multiple images - shown as a small collage; takes priority over `image`
+  emoji?: string;        // shown if no image(s)
   tags: string[];
   link?: { label: string; url: string };
 };
@@ -58,16 +59,17 @@ export const updates: Update[] = [
     caption:
       "having fun exploring a completely new country while gathering tons of design inspiration along the way.",
     emoji: "✈️",
+    images: ["/updates/busan.jpg", "/updates/seoul.jpg", "/updates/puffpastries.jpg"],
     tags: ["travel", "life"],
   },
-  // 👇 add new entries above this line — replace this placeholder with real ones
+  // 👇 add new entries above this line - replace this placeholder with real ones
   {
     id: "lucky-cats",
     title: "recent inspiration",
     date: "June 2026",
     caption: "finally learned the history behind the lucky cat (maneki-neko) and its many variations!",
     emoji: "📸",
-    image: "https://photos.app.goo.gl/TZdvbyARu3RtXSSw8",
+    image: "/updates/luckycats.jpg",
     tags: ["life","tokyo"],
   },
 ];

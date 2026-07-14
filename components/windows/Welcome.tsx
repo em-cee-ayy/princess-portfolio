@@ -30,7 +30,7 @@ export default function Welcome({ onOpenWork }: Props) {
         <strong>
           i build products that treat cognitive state as a first-class input.
         </strong>{" "}
-        every one runs the same loop — sense the user&apos;s state, classify it
+        every one runs the same loop - sense the user&apos;s state, classify it
         with AI, adapt the experience, feed the outcome back into the next
         decision. brainmode runs that loop at the interface layer, happy trails
         at the environment layer, and the phantom prd asks what we owe users
@@ -40,7 +40,7 @@ export default function Welcome({ onOpenWork }: Props) {
         i&apos;m a senior product engineer with a psychology degree, a ux/ui
         certification, and a habit of connecting them. at soci i lead
         company-wide ai training and ship internal ai products; outside work i
-        build cognitive-state-aware products end to end — research → design
+        build cognitive-state-aware products end to end - research → design
         system → api contract → shipped code. the throughline: i think in loops
         and second-order effects. if a design decision doesn&apos;t account for
         what it teaches the user to do next, it isn&apos;t finished.

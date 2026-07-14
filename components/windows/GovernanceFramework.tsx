@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * AI Governance Framework — the publishable artifact behind case study #3
+ * AI Governance Framework - the publishable artifact behind case study #3
  * (companion to the Phantom PRD, governance layer). Professional register:
  * sentence case throughout. Content is held as data so the copy stays
  * verbatim and the rendering stays systematic.
@@ -16,7 +16,7 @@ EXPLICIT NON-GOALS:   No autonomous patient communication. No diagnostic
 SYSTEM DEPENDENCIES:  LLM API (zero-data-retention contract) · vector store
                       (RBAC-tagged embeddings) · transcript pipeline
 AFFECTED STAKEHOLDERS: Clinicians (internal) · patients (external, high-stakes)
-DATA CLASSIFICATION:  PHI — highest tier
+DATA CLASSIFICATION:  PHI - highest tier
 EU AI ACT ORIENTATION: Health context → treat as high-risk-adjacent; document
                       accordingly even where not strictly in scope`;
 
@@ -36,7 +36,7 @@ const WORKFLOW = `[PM/engineer creates draft record]
    │                   │
    └────────┬──────────┘
             ▼
-[immutable audit log entry — who, when, what config]
+[immutable audit log entry - who, when, what config]
             ▼
 [CI/CD pipeline unlocks deploy]`;
 
@@ -60,28 +60,28 @@ const RISK_REGISTER: { risk: string; wrong: string; mitigation: string }[] = [
     wrong:
       "A fabricated medication, dosage, or finding enters a draft; a rushed clinician signs it into the patient record.",
     mitigation:
-      "RAG-grounded on the visit transcript only (no general-knowledge generation) · temperature 0 for deterministic output · structured schema validation — non-conforming output is discarded, never rendered · clinician review + signature as a hard product gate, not a suggestion.",
+      "RAG-grounded on the visit transcript only (no general-knowledge generation) · temperature 0 for deterministic output · structured schema validation - non-conforming output is discarded, never rendered · clinician review + signature as a hard product gate, not a suggestion.",
   },
   {
     risk: "PHI exposure",
     wrong:
       "Protected health information reaches an external model provider, or retrieval surfaces one patient's data to the wrong user.",
     mitigation:
-      "Inline PHI masking/NER scrubbing before any external API call · zero-data-retention API contracts, verified not assumed · RBAC at the vector level — embeddings carry permission metadata, and every query is filtered by the requesting user's active session token.",
+      "Inline PHI masking/NER scrubbing before any external API call · zero-data-retention API contracts, verified not assumed · RBAC at the vector level - embeddings carry permission metadata, and every query is filtered by the requesting user's active session token.",
   },
   {
     risk: "Prompt injection via patient-supplied text",
     wrong:
       "Malicious content in an intake form or message (“ignore your instructions and…”) manipulates the summarizer's behavior.",
     mitigation:
-      "All user-originated text treated as untrusted data — wrapped with strict role segregation from system instructions (the SQL-injection mindset, applied to prompts) · upstream semantic intent filtering · output PII/toxicity scrubbing before render.",
+      "All user-originated text treated as untrusted data - wrapped with strict role segregation from system instructions (the SQL-injection mindset, applied to prompts) · upstream semantic intent filtering · output PII/toxicity scrubbing before render.",
   },
   {
     risk: "Silent model drift",
     wrong:
       "A vendor model update quietly changes summary quality; a feature that was safe last month degrades without any code change.",
     mitigation:
-      "Model registry logging every deployed model version, prompt template, and system config — with instant rollback · continuous evaluation against a gold-standard transcript set on every codebase update · schema gates block failing outputs and fire alerts.",
+      "Model registry logging every deployed model version, prompt template, and system config - with instant rollback · continuous evaluation against a gold-standard transcript set on every codebase update · schema gates block failing outputs and fire alerts.",
   },
   {
     risk: "Resource abuse",
@@ -120,7 +120,7 @@ const FEATURE_SPEC: {
     type: "Product + Safety",
     owner: "PM",
     criteria:
-      "Unsigned drafts are non-persistable at the API level — the unsafe path does not exist",
+      "Unsigned drafts are non-persistable at the API level - the unsafe path does not exist",
   },
   {
     id: "R4",
@@ -191,12 +191,12 @@ export default function GovernanceFramework({
           Governing AI feature rollout in a healthtech SaaS
         </div>
         <div className="italic text-[#555] mt-1">
-          An applied AI governance framework — by Mariah Anderson
+          An applied AI governance framework - by Mariah Anderson
         </div>
         <p className="mt-3 text-[12px]">
           The publishable artifact behind portfolio case study #3. Written as the
           deliverable an AI Governance PM would hand a healthtech engineering org
-          on day 30. Sentence case throughout — this is a professional artifact,
+          on day 30. Sentence case throughout - this is a professional artifact,
           same register as the Phantom PRD.
         </p>
         <div className="mt-2 p-2 bg-[#eef3fb] border-l-4 border-[#1B998B] text-[12px]">
@@ -227,7 +227,7 @@ export default function GovernanceFramework({
         <Heading>The premise</Heading>
         <p className="text-[12px]">
           A mid-size healthtech SaaS (clinic management platform) wants to ship
-          its first AI feature: <strong>AI-drafted visit summaries</strong> — the
+          its first AI feature: <strong>AI-drafted visit summaries</strong> - the
           model drafts a structured summary from the visit transcript, and the
           clinician reviews, edits, and signs before anything touches the patient
           record.
@@ -242,7 +242,7 @@ export default function GovernanceFramework({
           <li>A risk-tiered approval workflow that gates CI/CD with an immutable audit trail</li>
           <li>
             A flagship feature spec where compliance requirements are product
-            requirements — with owners and acceptance criteria
+            requirements - with owners and acceptance criteria
           </li>
         </ol>
         <p className="text-[12px] mt-2">
@@ -252,10 +252,10 @@ export default function GovernanceFramework({
           CIA triad.
         </p>
 
-        <Heading>Artifact 1 — the use-case impact assessment</Heading>
+        <Heading>Artifact 1 - the use-case impact assessment</Heading>
         <p className="text-[12px]">
           Every AI feature starts as a structured record, not a Slack thread. The
-          template is deliberately short — a form nobody fills out governs nothing.
+          template is deliberately short - a form nobody fills out governs nothing.
         </p>
         <Code>{IMPACT_ASSESSMENT}</Code>
         <p className="text-[12px] mt-2">
@@ -264,7 +264,7 @@ export default function GovernanceFramework({
           (the trigger for automated risk tiering below).
         </p>
 
-        <Heading>Artifact 2 — the risk-tiered approval workflow</Heading>
+        <Heading>Artifact 2 - the risk-tiered approval workflow</Heading>
         <p className="text-[12px]">
           Governance that treats every feature identically will be routed around.
           This flow makes the governed path the fast path: low-risk features move
@@ -279,13 +279,13 @@ export default function GovernanceFramework({
         </p>
         <Code>{MANIFEST}</Code>
         <p className="text-[12px] mt-2">
-          Every state transition — who approved, when, with which prompt
-          configuration — is written to an append-only log table. When behavior
+          Every state transition - who approved, when, with which prompt
+          configuration - is written to an append-only log table. When behavior
           changes in production, the first question (&ldquo;what changed, who
           signed it?&rdquo;) has a one-query answer.
         </p>
 
-        <Heading>Artifact 3 — the risk register</Heading>
+        <Heading>Artifact 3 - the risk register</Heading>
         <p className="text-[12px]">
           ISO 42001 requires cataloging what could go wrong and proving the stack
           stops it. Impact stated in patient terms, because that&apos;s the term
@@ -312,10 +312,10 @@ export default function GovernanceFramework({
           </tbody>
         </table>
 
-        <Heading>Artifact 4 — the flagship feature spec</Heading>
+        <Heading>Artifact 4 - the flagship feature spec</Heading>
         <p className="text-[12px]">
           The point of the whole framework in one table: compliance items written
-          as product requirements with owners and acceptance criteria —
+          as product requirements with owners and acceptance criteria -
           indistinguishable in form from any other requirement, because that&apos;s
           what makes them ship.
         </p>
@@ -349,7 +349,7 @@ export default function GovernanceFramework({
 
         <Heading>Why this is the governance layer of a product portfolio</Heading>
         <p className="text-[12px]">
-          Every product I build runs one loop — sense a state, classify it with AI,
+          Every product I build runs one loop - sense a state, classify it with AI,
           adapt the experience, learn from the outcome. This framework is that same
           loop applied to an organization&apos;s AI pipeline: sense the
           feature&apos;s risk surface (impact assessment), classify it (automated

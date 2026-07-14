@@ -53,6 +53,10 @@ export default function Window({
       });
     }
     function handleUp() {
+      if (dragRef.current) {
+        document.body.style.cursor = "";
+        document.body.style.userSelect = "";
+      }
       dragRef.current = null;
     }
     window.addEventListener("mousemove", handleMove);
@@ -66,6 +70,10 @@ export default function Window({
   function startDrag(e: React.MouseEvent) {
     if (maximized) return;
     onFocus();
+    // Keep the "grabbing" hand for the whole drag, even when the pointer
+    // strays off the 22px titlebar onto the window body or desktop.
+    document.body.style.cursor = "grabbing";
+    document.body.style.userSelect = "none";
     dragRef.current = {
       startX: e.clientX,
       startY: e.clientY,

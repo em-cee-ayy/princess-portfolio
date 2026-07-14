@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { updates, TAG_COLORS } from "@/lib/updates";
 
 const ALL_TAGS = ["all", "project", "travel", "event", "abrc", "soci", "life"];
@@ -77,13 +78,48 @@ export default function WhatsNew() {
                   boxShadow: "2px 2px 0 #ddd",
                 }}
               >
-                {u.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={u.image}
-                    alt={u.title}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
+                {u.images && u.images.length > 0 ? (
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: u.images.length === 1 ? "1fr" : "1fr 1fr",
+                      gap: 2,
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    {u.images.map((src, i) => (
+                      <div
+                        key={src}
+                        style={{
+                          position: "relative",
+                          width: "100%",
+                          height: "100%",
+                          // a 3rd image spans the full bottom row
+                          gridColumn:
+                            u.images!.length === 3 && i === 2 ? "1 / -1" : undefined,
+                        }}
+                      >
+                        <Image
+                          src={src}
+                          alt={`${u.title} (${i + 1})`}
+                          fill
+                          sizes="120px"
+                          style={{ objectFit: "cover" }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : u.image ? (
+                  <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                    <Image
+                      src={u.image}
+                      alt={u.title}
+                      fill
+                      sizes="120px"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
                 ) : (
                   <div style={{ fontSize: 48 }}>{u.emoji || "📷"}</div>
                 )}
@@ -127,16 +163,9 @@ export default function WhatsNew() {
 
           {filtered.length === 0 && (
             <div className="text-[12px] italic text-[#666] py-6 text-center">
-              nothing tagged &quot;{filter}&quot; yet — check back soon 💛
+              nothing tagged &quot;{filter}&quot; yet - check back soon 💛
             </div>
           )}
-        </div>
-
-        <div className="mt-5 p-3 border-l-4 border-[#0a3cc4] bg-[#eef3fb] text-[11px]">
-          <strong>psst (for Mariah):</strong> add new entries in{" "}
-          <code className="bg-white px-1">lib/updates.ts</code>. drop photos in{" "}
-          <code className="bg-white px-1">/public/updates/</code> and reference them
-          like <code className="bg-white px-1">/updates/your-pic.jpg</code>.
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ type TaskbarProps = {
 
 export default function Taskbar({ items, onItemClick, onStartClick }: TaskbarProps) {
   // Start null so the server render and the first client render agree (empty),
-  // then fill the clock in after mount — otherwise a minute rolling over
+  // then fill the clock in after mount - otherwise a minute rolling over
   // between SSR and hydration triggers a hydration mismatch.
   const [now, setNow] = useState<Date | null>(null);
 

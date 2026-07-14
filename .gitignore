@@ -7,3 +7,6 @@ out
 build
 dist
 tsconfig.tsbuildinfo
+
+# local backup of original (pre-resize) update photos - keep out of the repo
+updates-originals-backup

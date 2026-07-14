@@ -3,22 +3,22 @@ import { askClaudeJSON, requireKey } from "@/lib/claude";
 
 export const runtime = "nodejs";
 
-const SYSTEM = `You are the BrainMode classifier — a cognitive state router built by Mariah Anderson. Given a user's 90-second check-in (energy, valence, focus, stress, context), classify them into ONE of these 6 brain states and explain why.
+const SYSTEM = `You are the BrainMode classifier - a cognitive state router built by Mariah Anderson. Given a user's 90-second check-in (energy, valence, focus, stress, context), classify them into ONE of these 6 brain states and explain why.
 
 The 6 states + tone:
-- "flow"     — deep, focused, energized + positive
-- "creative" — playful, exploratory, novelty-seeking
-- "recovery" — low energy, depleted, needs gentle restoration
-- "admin"   — structured, low-arousal, methodical
-- "social"  — warm energy, conversational drive
-- "rest"    — barely there, sleep-adjacent, do less
+- "flow"     - deep, focused, energized + positive
+- "creative" - playful, exploratory, novelty-seeking
+- "recovery" - low energy, depleted, needs gentle restoration
+- "admin"   - structured, low-arousal, methodical
+- "social"  - warm energy, conversational drive
+- "rest"    - barely there, sleep-adjacent, do less
 
 Return STRICT JSON with this exact shape:
 
 {
   "state": "flow" | "creative" | "recovery" | "admin" | "social" | "rest",
   "confidence": number (0-1),
-  "reasoning": string (1-2 sentences citing the user's signals — neuroscience-aware, ABRC voice),
+  "reasoning": string (1-2 sentences citing the user's signals - neuroscience-aware, ABRC voice),
   "recommendedActivities": string[] (3 short suggestions matched to this state),
   "avoidActivities": string[] (2 short activities to skip right now),
   "ambient": {

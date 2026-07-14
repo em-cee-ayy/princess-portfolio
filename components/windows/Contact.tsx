@@ -19,13 +19,13 @@ export default function Contact() {
         </p>
         <ul className="mt-3 space-y-1">
           <li>
-            ✉️ email —{" "}
+            ✉️ email -{" "}
             <a className="xp-link" href="mailto:mariah.c.anderson@gmail.com">
               mariah.c.anderson@gmail.com
             </a>
           </li>
           <li>
-            💼 linkedin —{" "}
+            💼 linkedin -{" "}
             <a
               className="xp-link"
               href="https://www.linkedin.com/in/mariahanderson"
@@ -36,7 +36,7 @@ export default function Contact() {
             </a>
           </li>
           <li>
-            🐙 github —{" "}
+            🐙 github -{" "}
             <a
               className="xp-link"
               href="https://github.com/em-cee-ayy"
@@ -47,7 +47,7 @@ export default function Contact() {
             </a>
           </li>
           <li>
-            🌐 portfolio —{" "}
+            🌐 portfolio -{" "}
             <a
               className="xp-link"
               href="https://mariahtheoptimist.framer.website"
@@ -58,7 +58,7 @@ export default function Contact() {
             </a>
           </li>
           <li>
-            ✨ substack (ABRC) —{" "}
+            ✨ substack (ABRC) -{" "}
             <a
               className="xp-link"
               href="https://antibrainrotclub.substack.com"
@@ -69,7 +69,7 @@ export default function Contact() {
             </a>
           </li>
           <li>
-            🎬 tiktok —{" "}
+            🎬 tiktok -{" "}
             <a
               className="xp-link"
               href="https://www.tiktok.com/@whoismariahhhh"

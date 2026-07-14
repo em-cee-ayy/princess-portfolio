@@ -11,6 +11,7 @@ type Props = {
 export default function FriendlyTip({ open, onOk, onCancel }: Props) {
   // null = not yet positioned; falls back to the centered default until dragged
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const [dragging, setDragging] = useState(false);
   const dragRef = useRef<{
     startX: number;
     startY: number;
@@ -30,6 +31,11 @@ export default function FriendlyTip({ open, onOk, onCancel }: Props) {
       });
     }
     function handleUp() {
+      if (dragRef.current) {
+        document.body.style.cursor = "";
+        document.body.style.userSelect = "";
+        setDragging(false);
+      }
       dragRef.current = null;
     }
     window.addEventListener("mousemove", handleMove);
@@ -44,6 +50,9 @@ export default function FriendlyTip({ open, onOk, onCancel }: Props) {
     const rect = boxRef.current?.getBoundingClientRect();
     const origX = pos?.x ?? rect?.left ?? 0;
     const origY = pos?.y ?? rect?.top ?? 0;
+    document.body.style.cursor = "grabbing";
+    document.body.style.userSelect = "none";
+    setDragging(true);
     dragRef.current = { startX: e.clientX, startY: e.clientY, origX, origY };
   }
 
@@ -59,7 +68,7 @@ export default function FriendlyTip({ open, onOk, onCancel }: Props) {
       <div className="dialog-box">
         <div
           className="xp-titlebar"
-          style={{ height: 22, cursor: "grab" }}
+          style={{ height: 22, cursor: dragging ? "grabbing" : "grab" }}
           onMouseDown={startDrag}
         >
           <span>Friendly Tip</span>

@@ -2,14 +2,14 @@
 
 Hola! This is the source for my Windows-XP-inspired desktop portfolio. I'm Mariah Anderson - Sr. Product Engineer at SOCi, AI Enablement & Governance Lead, Psych Graduate turned Engineer, currently building toward AI Product Leadership.
 
-The whole site runs on one idea: **technology should work WITH the human brain, not against it.** Every project on the desktop is that idea at a different layer — 1 loop (sense → classify → adapt → learn), 4 layers: interface, environment, design system, governance.
+The whole site runs on one idea: **technology should work WITH the human brain, not against it.** Every project on the desktop is that idea at a different layer - 1 loop (sense → classify → adapt → learn), 4 layers: interface, environment, design system, governance.
 
 Also it looks like Windows XP, because the early internet raised me, and I miss when computers were fun.
 
 ## What's on the desktop
 
 - **work.explorer** 💼 - The 4 case studies (BrainMode, Happy Trails AI, ABRC, The Phantom PRD), tabbed like it's 2003
-- **governance.msc** 🛡️ - The AI governance side of my work: SOCi Sage (an internal RAG assistant governed from day one), the company-wide AI enablement program, and an applied healthtech governance framework — risk tables and all. yes, the `.msc` extension is a management-console joke. No, I will not apologize
+- **governance.msc** 🛡️ - The AI governance side of my work: SOCi Sage (an internal RAG assistant governed from day one), the company-wide AI enablement program, and an applied healthtech governance framework - risk tables and all. yes, the `.msc` extension is a management-console joke. No, I will not apologize
 - **System Map** 🗺️ - A window that maps how everything here connects
 - **SOCi Highlights** 🚀 - What I've built inside SOCi beyond the job description: Claude training webinars run with our VPs + CTO, the ISO 42001-aligned LMS, the recognition that followed
 - **AIM (chat with me)** 🏃 - A real AOL-style buddy list. Double-click me to open an IM with mariahtheoptimist (it's Claude under the hood, it knows my resume and projects, and it can deep-link you to any window on the desktop). Sign-on chime included, obviously
@@ -37,13 +37,13 @@ cp .env.local.example .env.local
 npm run dev
 ```
 
-open [http://localhost:3000](http://localhost:3000) — the desktop boots with the Welcome window and the Friendly Tip.
+open [http://localhost:3000](http://localhost:3000) - the desktop boots with the Welcome window and the Friendly Tip.
 
 ### env vars
 
 | key | required? | notes |
 | --- | --- | --- |
-| `ANTHROPIC_API_KEY` | for Brain Lab + AIM chat | both fall back to a friendly error if it's missing — everything else works without it |
+| `ANTHROPIC_API_KEY` | for Brain Lab + AIM chat | both fall back to a friendly error if it's missing - everything else works without it |
 
 ## File Map
 
@@ -69,7 +69,7 @@ open [http://localhost:3000](http://localhost:3000) — the desktop boots with t
 │   └── windows/
 │       ├── Welcome.tsx
 │       ├── WorkExplorer.tsx      # the 4 case studies, tabbed
-│       ├── GovernanceFramework.tsx  # governance.msc — sage, enablement, healthtech framework
+│       ├── GovernanceFramework.tsx  # governance.msc - sage, enablement, healthtech framework
 │       ├── SystemMapWindow.tsx   # how everything connects
 │       ├── SOCiHighlights.tsx
 │       ├── BrainLab.tsx          # both live Claude tools
@@ -107,15 +107,15 @@ open [http://localhost:3000](http://localhost:3000) — the desktop boots with t
 
 ### content lives in `lib/`, not in JSX
 
-- `lib/caseStudies.ts` — pitch / problem / insight / decisions / stack / status for each of the 4 pieces
-- `lib/soci.ts` — the SOCi highlight cards
-- `lib/aimContext.ts` — everything the AIM chat knows. it auto-imports from `caseStudies.ts` and `soci.ts` plus a static resume string — when the resume changes, update the string here too, or the chatbot starts telling people old stories
-- `lib/trivia.ts` — swap questions freely; scoring + verdicts adapt
-- `lib/updates.ts` — what's.new entries. drop photos in `/public/updates/` and reference like `/updates/your-pic.jpg` (external URLs work too)
+- `lib/caseStudies.ts` - pitch / problem / insight / decisions / stack / status for each of the 4 pieces
+- `lib/soci.ts` - the SOCi highlight cards
+- `lib/aimContext.ts` - everything the AIM chat knows. it auto-imports from `caseStudies.ts` and `soci.ts` plus a static resume string - when the resume changes, update the string here too, or the chatbot starts telling people old stories
+- `lib/trivia.ts` - swap questions freely; scoring + verdicts adapt
+- `lib/updates.ts` - what's.new entries. drop photos in `/public/updates/` and reference like `/updates/your-pic.jpg` (external URLs work too)
 
 ### swapping the resume PDF
 
-replace `/public/Mariah-Anderson-resume.pdf` with the latest export — the Download button auto-points at that path. keep the in-window resume, the PDF, and `aimContext.ts` saying the same thing. (three surfaces, one story. i learned this the hard way.)
+replace `/public/Mariah-Anderson-resume.pdf` with the latest export - the Download button auto-points at that path. keep the in-window resume, the PDF, and `aimContext.ts` saying the same thing. (three surfaces, one story. i learned this the hard way.)
 
 ### adding a new window
 

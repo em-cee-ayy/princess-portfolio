@@ -68,7 +68,7 @@ export default function AIMBuddyList({ onOpenChat }: Props) {
         </div>
       </div>
 
-      {/* Body — either the buddy list or the "about this bot" info panel */}
+      {/* Body - either the buddy list or the "about this bot" info panel */}
       {showInfo ? (
         <InfoPanel onBack={() => setShowInfo(false)} onOpenChat={onOpenChat} />
       ) : (
@@ -147,7 +147,7 @@ function InfoPanel({
 
       <div className="text-[13px] font-bold mb-1">under the hood</div>
       <p className="text-[12px] mb-2">
-        The IM window isn&apos;t canned replies — it&apos;s a live Claude agent
+        The IM window isn&apos;t canned replies - it&apos;s a live Claude agent
         that actually knows my resume and projects. Here&apos;s how it&apos;s
         built:
       </p>
@@ -162,12 +162,12 @@ function InfoPanel({
           <strong>Context, not vector RAG:</strong> my whole resume + all four
           case studies + SOCi highlights fit in the prompt, so they&apos;re
           injected straight into the system prompt from one source of truth
-          (<code>lib/aimContext.ts</code>) — no embeddings needed at this size.
+          (<code>lib/aimContext.ts</code>) - no embeddings needed at this size.
         </li>
         <li>
           <strong>Deep links:</strong> the model can emit an{" "}
           <code>[open:work]</code>-style token; the UI turns it into a button
-          that opens that window — so the chat can actually navigate the desktop.
+          that opens that window - so the chat can actually navigate the desktop.
         </li>
         <li>
           <strong>Voice + guardrails:</strong> a system prompt pins the AIM-era
@@ -176,7 +176,7 @@ function InfoPanel({
         </li>
         <li>
           <strong>Sounds:</strong> the sign-on / message chimes are synthesized
-          live with the Web Audio API — no copyrighted clips shipped.
+          live with the Web Audio API - no copyrighted clips shipped.
         </li>
       </ul>
 

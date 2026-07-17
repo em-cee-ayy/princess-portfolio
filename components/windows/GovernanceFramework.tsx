@@ -366,7 +366,7 @@ export default function GovernanceFramework({
           ISO 42001 · NIST AI RMF · Google Cybersecurity + AI (Coursera, completing
           2026)
           <br />
-          Full portfolio: mariahtheoptimist.framer.website
+          Full portfolio: mariah-ca-portfolio.vercel.app
         </div>
       </div>
     </div>

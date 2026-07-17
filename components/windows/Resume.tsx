@@ -73,11 +73,11 @@ export default function Resume() {
             ·{" "}
             <a
               className="xp-link"
-              href="https://mariahtheoptimist.framer.website"
+              href="https://mariah-ca-portfolio.vercel.app/"
               target="_blank"
               rel="noreferrer"
             >
-              mariahtheoptimist.framer.website
+              mariah-ca-portfolio.vercel.app
             </a>{" "}
             · ABRC founder
           </div>

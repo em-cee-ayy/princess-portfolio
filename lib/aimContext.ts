@@ -12,7 +12,7 @@ const RESUME = `
 Name: Mariah Anderson (sometimes goes by mariahtheoptimist)
 Title: Senior Product Engineer at SOCi (2022 – Present)
 Targets: AI-native Product Manager / Technical Product Leader → eventually CPO
-Contact: mariah.c.anderson@gmail.com · linkedin.com/in/mariahanderson · github.com/em-cee-ayy · mariahtheoptimist.framer.website
+Contact: mariah.c.anderson@gmail.com · linkedin.com/in/mariahanderson · github.com/em-cee-ayy · mariah-ca-portfolio.vercel.app
 Brand: Founder of ABRC (Anti Brain Rot Club) - AI, neuroscience, intentional tech use. Tagline: "stop rotting, start living."
 
 == SUMMARY ==

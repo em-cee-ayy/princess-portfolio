@@ -44,6 +44,8 @@ open [http://localhost:3000](http://localhost:3000) - the desktop boots with the
 | key | required? | notes |
 | --- | --- | --- |
 | `ANTHROPIC_API_KEY` | for Brain Lab + AIM chat | both fall back to a friendly error if it's missing - everything else works without it |
+| `UPSTASH_REDIS_REST_URL` | in production | rate limiting for the Claude routes (10/min + 40/day per IP, 500/day sitewide). skipped with a console warning when missing - local dev needs zero setup |
+| `UPSTASH_REDIS_REST_TOKEN` | in production | pairs with the URL above - both from the REST API section of a free [Upstash](https://console.upstash.com/) Redis DB |
 
 ## File Map
 
@@ -81,6 +83,7 @@ open [http://localhost:3000](http://localhost:3000) - the desktop boots with the
 │       └── Resume.tsx
 ├── lib/
 │   ├── claude.ts                 # shared Anthropic client + strict-JSON helper (one client, three routes)
+│   ├── ratelimit.ts              # Upstash rate limits + global daily budget guarding all 3 routes
 │   ├── caseStudies.ts            # ← the 4 case studies live here (pure data)
 │   ├── soci.ts                   # ← SOCi highlights
 │   ├── aimContext.ts             # single source of truth for what the AIM chat knows

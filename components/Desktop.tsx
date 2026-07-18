@@ -20,6 +20,7 @@ import Resume from "./windows/Resume";
 import AIMBuddyList from "./windows/AIMBuddyList";
 import AIMChat from "./windows/AIMChat";
 import WhatsNew from "./windows/WhatsNew";
+import HappyTrails from "./windows/HappyTrails";
 
 type AppId =
   | "welcome"
@@ -33,7 +34,8 @@ type AppId =
   | "resume"
   | "aim-buddy"
   | "aim-chat"
-  | "whatsnew";
+  | "whatsnew"
+  | "happytrails";
 
 type OpenWin = {
   id: AppId;
@@ -57,6 +59,7 @@ const APP_META: Record<
   "aim-buddy": { title: "AIM - Buddy List", icon: "🏃", width: 280, height: 420, x: 60, y: 80 },
   "aim-chat": { title: "IM with mariahtheoptimist", icon: "💬", width: 520, height: 560, x: 360, y: 90 },
   whatsnew: { title: "what's.new - Mariah's scrapbook", icon: "📓", width: 680, height: 580, x: 200, y: 80 },
+  happytrails: { title: "Happy Trails AI - interactive mockups", icon: "🥾", width: 900, height: 640, x: 120, y: 50 },
 };
 
 const ICONS: { id: AppId; label: string; art: React.ReactNode }[] = [
@@ -368,5 +371,7 @@ function renderApp(
       return <AIMChat onOpenApp={(appId) => open(appId as AppId)} />;
     case "whatsnew":
       return <WhatsNew />;
+    case "happytrails":
+      return <HappyTrails />;
   }
 }

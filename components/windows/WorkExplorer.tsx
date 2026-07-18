@@ -56,6 +56,39 @@ export default function WorkExplorer({
           <p className="mt-1">{active.pitch}</p>
         </div>
 
+        {active.mockupUrl && onOpenApp && (
+          <div
+            className="mt-3 p-3 text-[12px]"
+            style={{ background: "#eef5ea", borderLeft: "4px solid #4a7c59" }}
+          >
+            <strong>Try it yourself.</strong> The full interactive mockup suite
+            for this project is live - click around the real screens.{" "}
+            <button
+              onClick={() => onOpenApp("happytrails")}
+              className="xp-link"
+              style={{
+                background: "none",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+                color: "#0a3cc4",
+                textDecoration: "underline",
+                fontSize: 12,
+              }}
+            >
+              🥾 launch the interactive mockup suite →
+            </button>{" "}
+            <a
+              href={active.mockupUrl}
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#0a3cc4", textDecoration: "underline" }}
+            >
+              (or pop out full screen ↗)
+            </a>
+          </div>
+        )}
+
         {active.liveUrl && (
           <div
             className="mt-3 p-3 text-[12px]"

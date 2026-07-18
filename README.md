@@ -78,6 +78,7 @@ open [http://localhost:3000](http://localhost:3000) - the desktop boots with the
 │       ├── AIMBuddyList.tsx
 │       ├── AIMChat.tsx
 │       ├── WhatsNew.tsx
+│       ├── HappyTrails.tsx       # the live mockup suite, iframed from its own Vercel deploy
 │       ├── SpillTheBeans.tsx
 │       ├── Contact.tsx
 │       └── Resume.tsx
@@ -92,12 +93,7 @@ open [http://localhost:3000](http://localhost:3000) - the desktop boots with the
 │   └── aimSounds.ts              # programmatic AIM chimes
 ├── public/
 │   ├── Mariah-Anderson-resume.pdf
-│   ├── updates/                  # photos for what's.new
-│   └── case-studies/
-│       ├── brainmode/
-│       ├── happytrails/
-│       ├── abrc/
-│       └── phantomprd/
+│   └── updates/                  # photos for what's.new
 ├── tailwind.config.js            # ABRC + XP palettes live in theme.extend.colors
 ├── next.config.js
 ├── package.json

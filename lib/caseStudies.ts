@@ -23,6 +23,7 @@ export type CaseStudy = {
   outcomes: string[];
   status: string;
   liveUrl?: string;      // external link to a live/published version of this project
+  mockupUrl?: string;    // interactive mockup suite - opens in its own XP window (iframe)
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -31,7 +32,6 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Engineer",
     emoji: "🛠️",
     title: "BrainMode - a cognitive state router (not a task manager)",
-    cover: "/case-studies/brainmode/cover.jpg",         // ← card thumbnail
     // videos: [
     // {
     //   src: "/case-studies/brainmode/demo.mp4",
@@ -99,6 +99,7 @@ export const caseStudies: CaseStudy[] = [
     role: "AI Engineer",
     emoji: "🤖",
     title: "Happy Trails AI - trail recommendations for your nervous system",
+    mockupUrl: "https://happy-trails-portfolio-app.vercel.app/",
     // videos: [
     // {
     //   src: "/case-studies/brainmode/demo.mp4",

@@ -31,6 +31,11 @@
   --font-content: "Segoe UI", Tahoma, Verdana, Arial, sans-serif;
 
   --xp-bg: linear-gradient(180deg, #5b9bd5 0%, #84b8e8 35%, #c2e0f5 60%, #7cb86b 60%, #4d8a3e 100%);
+
+  /* ── shell metrics: windows, taskbar, and topbar all read these,
+        so the mobile block below can resize the whole chrome at once ─── */
+  --topbar-h: 22px;
+  --taskbar-h: 30px;
 }
 
 html,
@@ -188,7 +193,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 30px;
+  height: var(--taskbar-h);
   background: linear-gradient(180deg, #245edc 0%, #3a6fe0 8%, #245edc 18%, #1941a5 100%);
   border-top: 1px solid #0831d9;
   display: flex;
@@ -198,7 +203,7 @@ body {
 }
 
 .xp-start-btn {
-  height: 30px;
+  height: var(--taskbar-h);
   padding: 0 22px 0 12px;
   background: linear-gradient(180deg, var(--xp-start-a) 0%, #279129 18%, #1d7a1e 80%, var(--xp-start-b) 100%);
   color: #fff;
@@ -249,7 +254,7 @@ body {
   color: #fff;
   border-left: 1px solid #0a3a78;
   padding: 0 12px;
-  height: 30px;
+  height: var(--taskbar-h);
   display: flex;
   align-items: center;
   font-size: 11px;
@@ -300,7 +305,7 @@ body {
 .xp-topbar {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: 22px;
+  height: var(--topbar-h);
   background: linear-gradient(180deg, #d4d0c8 0%, #ece9d8 100%);
   border-bottom: 1px solid #808080;
   display: flex;
@@ -523,4 +528,150 @@ a.xp-link:hover {
 }
 .blink {
   animation: blinkOnce 1.2s ease 2;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Adaptive mobile XP shell (<768px or touch-first devices).
+   Desktop keeps its exact chrome; here windows are full-screen apps,
+   icons are a tap-to-open grid, and every target is thumb-sized.
+   ──────────────────────────────────────────────────────────────── */
+@media (max-width: 767px), (pointer: coarse) {
+  :root {
+    --topbar-h: 30px;
+    --taskbar-h: 46px;
+  }
+
+  /* window chrome: bigger titlebar + buttons */
+  .xp-titlebar {
+    height: 34px;
+    font-size: 13px;
+    padding: 4px 6px 4px 8px;
+    border-radius: 0; /* full-screen windows have no floating corners */
+  }
+  .xp-titlebar-btn {
+    width: 34px;
+    height: 28px;
+    font-size: 13px;
+    line-height: 26px;
+  }
+
+  /* taskbar: thumb-sized app switcher */
+  .xp-start-btn {
+    font-size: 15px;
+    padding: 0 18px 0 12px;
+  }
+  .xp-taskbar-item {
+    padding: 8px 10px;
+    font-size: 12px;
+    max-width: 130px;
+    min-height: 36px;
+    flex: 0 0 auto;
+  }
+  .xp-clock {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+  .xp-taskbar .flex-1 {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* topbar shortcuts */
+  .xp-topbar button {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+
+  /* start menu: thumb-sized rows (component caps the width) */
+  .xp-startmenu button {
+    padding: 10px 12px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+
+  /* tabs (work.explorer): swipe sideways instead of squeezing */
+  .xp-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .xp-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .xp-tab {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  /* windows content never causes page-level sideways scroll */
+  .xp-content {
+    overflow-x: hidden;
+    font-size: 14px;
+  }
+  .xp-content img,
+  .xp-content video,
+  .xp-content table {
+    max-width: 100%;
+  }
+  .xp-content table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* range inputs (Brain Lab sliders): fat, tappable thumbs */
+  .xp-content input[type="range"] {
+    height: 32px;
+  }
+  .xp-content input[type="range"]::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+  }
+  .xp-content input[type="range"]::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* text inputs: 16px+ so iOS Safari doesn't zoom the page on focus
+     (!important because some inputs set an inline 12px font) */
+  .xp-content input[type="text"],
+  .xp-content textarea {
+    font-size: 16px !important;
+  }
+
+  /* narrower scrollbars inside windows */
+  .xp-window ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* dialogs (Friendly Tip) fit small screens */
+  .dialog-box {
+    min-width: 0;
+    width: min(340px, calc(100vw - 24px));
+  }
+
+  /* the sense→classify→adapt→learn strip stacks instead of squeezing */
+  .sys-track {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile icon grid: scrollable home screen between topbar and taskbar */
+.mobile-icon-grid {
+  position: fixed;
+  top: var(--topbar-h);
+  bottom: var(--taskbar-h);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  justify-items: center;
+  align-content: start;
+  gap: 10px 2px;
+  padding: 18px 10px calc(18px + env(safe-area-inset-bottom));
+}
+.mobile-icon-grid .desktop-icon {
+  cursor: pointer;
 }

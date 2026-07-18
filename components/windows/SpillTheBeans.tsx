@@ -77,7 +77,7 @@ export default function SpillTheBeans() {
         {q.q}
       </div>
 
-      <div className="mt-5 grid grid-cols-2 gap-3 px-4">
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3 px-4">
         {q.options.map((opt, i) => {
           const isPicked = picked === i;
           const isCorrect = i === q.answer;

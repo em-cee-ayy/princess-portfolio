@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import useIsMobile from "@/lib/useIsMobile";
 
 type WindowProps = {
   id: string;
@@ -35,6 +36,7 @@ export default function Window({
 }: WindowProps) {
   const [pos, setPos] = useState({ x: initialX, y: initialY });
   const [maximized, setMaximized] = useState(false);
+  const isMobile = useIsMobile();
   const dragRef = useRef<{
     startX: number;
     startY: number;
@@ -68,7 +70,7 @@ export default function Window({
   }, []);
 
   function startDrag(e: React.MouseEvent) {
-    if (maximized) return;
+    if (maximized || isMobile) return;
     onFocus();
     // Keep the "grabbing" hand for the whole drag, even when the pointer
     // strays off the 22px titlebar onto the window body or desktop.
@@ -82,12 +84,14 @@ export default function Window({
     };
   }
 
-  const style: React.CSSProperties = maximized
+  // Mobile: every window is a full-screen app between topbar and taskbar -
+  // no dragging, no overlap; the taskbar is the app switcher.
+  const style: React.CSSProperties = maximized || isMobile
     ? {
-        top: 22,
+        top: "var(--topbar-h, 22px)",
         left: 0,
         right: 0,
-        bottom: 30,
+        bottom: "var(--taskbar-h, 30px)",
         width: "auto",
         height: "auto",
         position: "fixed",
@@ -112,7 +116,9 @@ export default function Window({
       <div
         className={`xp-titlebar ${isActive ? "" : "inactive"}`}
         onMouseDown={startDrag}
-        onDoubleClick={() => setMaximized((m) => !m)}
+        onDoubleClick={() => {
+          if (!isMobile) setMaximized((m) => !m);
+        }}
       >
         <div className="flex items-center gap-1.5 truncate">
           {icon && <span className="text-base leading-none">{icon}</span>}
@@ -131,16 +137,18 @@ export default function Window({
               _
             </button>
           )}
-          <button
-            className="xp-titlebar-btn max"
-            onClick={(e) => {
-              e.stopPropagation();
-              setMaximized((m) => !m);
-            }}
-            aria-label="Maximize"
-          >
-            □
-          </button>
+          {!isMobile && (
+            <button
+              className="xp-titlebar-btn max"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMaximized((m) => !m);
+              }}
+              aria-label="Maximize"
+            >
+              □
+            </button>
+          )}
           <button
             className="xp-titlebar-btn"
             onClick={(e) => {

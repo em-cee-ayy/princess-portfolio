@@ -9,6 +9,8 @@ type IconProps = {
   style?: React.CSSProperties;
   onMouseDown?: (e: React.MouseEvent) => void;
   dragging?: boolean;
+  /** Mobile: open on a single tap instead of double-click. */
+  singleTap?: boolean;
 };
 
 export default function DesktopIcon({
@@ -18,6 +20,7 @@ export default function DesktopIcon({
   style,
   onMouseDown,
   dragging,
+  singleTap,
 }: IconProps) {
   const [selected, setSelected] = useState(false);
 
@@ -29,8 +32,9 @@ export default function DesktopIcon({
       onClick={(e) => {
         e.stopPropagation();
         setSelected(true);
+        if (singleTap) onOpen();
       }}
-      onDoubleClick={onOpen}
+      onDoubleClick={singleTap ? undefined : onOpen}
       onBlur={() => setSelected(false)}
       tabIndex={0}
     >

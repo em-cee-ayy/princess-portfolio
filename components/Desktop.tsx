@@ -7,6 +7,7 @@ import Taskbar from "./Taskbar";
 import StartMenu from "./StartMenu";
 import FriendlyTip from "./FriendlyTip";
 import { playStartup } from "@/lib/aimSounds";
+import useIsMobile from "@/lib/useIsMobile";
 
 import Welcome from "./windows/Welcome";
 import WorkExplorer from "./windows/WorkExplorer";
@@ -88,6 +89,7 @@ export default function Desktop() {
   // Render the date only after mount so SSR (server timezone) and client
   // (visitor timezone) can't disagree and trip a hydration mismatch.
   const [mounted, setMounted] = useState(false);
+  const isMobile = useIsMobile();
 
   // Draggable desktop icons - positions computed after mount into 2 columns
   // anchored to the right edge, then free to be dragged anywhere.
@@ -251,8 +253,22 @@ export default function Desktop() {
         </div>
       </div>
 
-      {/* Desktop icons - draggable, laid out in 2 columns after mount */}
-      {mounted && (
+      {/* Desktop icons. Desktop: draggable, 2 columns anchored right.
+          Mobile: fixed grid, single tap opens, no dragging. */}
+      {mounted && isMobile && (
+        <div className="mobile-icon-grid">
+          {ICONS.map((ic) => (
+            <DesktopIcon
+              key={ic.id}
+              label={ic.label}
+              art={ic.art}
+              onOpen={() => open(ic.id)}
+              singleTap
+            />
+          ))}
+        </div>
+      )}
+      {mounted && !isMobile && (
         <div className="fixed inset-0" style={{ zIndex: 1, pointerEvents: "none" }}>
           {ICONS.map((ic) => {
             const p = iconPos[ic.id];

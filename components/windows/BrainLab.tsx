@@ -120,7 +120,7 @@ function Scorer() {
 
       {result && (
         <div className="mt-4 space-y-3">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <Gauge
               label="🧠💀 brain rot"
               value={result.brainRotScore}
@@ -133,7 +133,7 @@ function Scorer() {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3 text-[12px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[12px]">
             <KV label="cognitive load" value={result.cognitiveLoad} />
             <KV label="emotional valence" value={result.emotionalValence} />
           </div>
@@ -292,7 +292,7 @@ function CheckIn() {
         open note, Claude routes you to one of 6 cognitive states.
       </p>
 
-      <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
         <Slider
           label="energy"
           value={energy}
@@ -365,7 +365,7 @@ function CheckIn() {
           </div>
           <p className="mt-2 text-[12px]">{result.reasoning}</p>
 
-          <div className="mt-3 grid grid-cols-2 gap-3 text-[12px]">
+          <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3 text-[12px]">
             <div>
               <div className="font-bold">do these →</div>
               <ul className="list-disc pl-4 mt-1 space-y-0.5">

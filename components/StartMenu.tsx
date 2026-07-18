@@ -31,11 +31,11 @@ export default function StartMenu({ open, onClose, onOpenApp }: StartMenuProps) 
         onClick={onClose}
       />
       <div
-        className="fixed"
+        className="fixed xp-startmenu"
         style={{
           left: 0,
-          bottom: 30,
-          width: 320,
+          bottom: "var(--taskbar-h, 30px)",
+          width: "min(320px, calc(100vw - 16px))",
           zIndex: 9998,
           border: "1px solid #0831d9",
           boxShadow: "2px 2px 8px rgba(0,0,0,0.4)",

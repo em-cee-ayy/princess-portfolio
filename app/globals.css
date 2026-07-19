@@ -392,6 +392,12 @@ body {
   font-size: 11px;
 }
 
+/* AIM chat log: 12px on desktop; the mobile block bumps it to match
+   the 16px input (which iOS forces so tapping it doesn't zoom the page) */
+.aim-chat-log {
+  font-size: 12px;
+}
+
 /* Scrollbar look */
 .xp-window ::-webkit-scrollbar {
   width: 16px;
@@ -636,6 +642,11 @@ a.xp-link:hover {
   .xp-content input[type="text"],
   .xp-content textarea {
     font-size: 16px !important;
+  }
+
+  /* AIM chat: bubbles match the 16px input so the sizes read as one UI */
+  .xp-content .aim-chat-log {
+    font-size: 16px;
   }
 
   /* narrower scrollbars inside windows */

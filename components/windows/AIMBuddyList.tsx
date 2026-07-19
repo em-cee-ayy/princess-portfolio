@@ -17,7 +17,10 @@ export default function AIMBuddyList({ onOpenChat }: Props) {
   }, []);
 
   return (
-    <div className="-m-3" style={{ background: "#FFCC33", minHeight: 360 }}>
+    <div
+      className="-m-3"
+      style={{ background: "#FFCC33", minHeight: "calc(100% + 24px)" }}
+    >
       {/* AIM header strip */}
       <div
         className="px-2 py-1 flex items-center gap-1 text-[11px]"
@@ -101,7 +104,7 @@ export default function AIMBuddyList({ onOpenChat }: Props) {
               </div>
 
               <div className="mt-3 text-[10px] text-[#5a3a00] italic px-3">
-                double-click Mariah to start an IM →
+                tap or double-click Mariah to start an IM →
               </div>
             </>
           )}

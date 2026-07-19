@@ -84,7 +84,7 @@ export default function AIMChat({ onOpenApp }: Props) {
   }
 
   return (
-    <div className="-m-3 flex flex-col" style={{ height: 500 }}>
+    <div className="-m-3 flex flex-col" style={{ height: "calc(100% + 24px)" }}>
       {/* Title-bar-style header inside the AIM window */}
       <div
         className="px-2 py-1 flex items-center justify-between text-[11px]"
@@ -103,8 +103,8 @@ export default function AIMChat({ onOpenApp }: Props) {
       {/* Chat history */}
       <div
         ref={scrollRef}
-        className="flex-1 overflow-auto p-3 space-y-2"
-        style={{ background: "#fffef5", fontSize: 12, lineHeight: 1.4 }}
+        className="aim-chat-log flex-1 overflow-auto p-3 space-y-2"
+        style={{ background: "#fffef5", lineHeight: 1.4 }}
       >
         {messages.map((m, i) => (
           <Bubble key={i} msg={m} onOpenApp={onOpenApp} />

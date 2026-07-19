@@ -68,7 +68,7 @@ export default function FriendlyTip({ open, onOk, onCancel }: Props) {
       <div className="dialog-box">
         <div
           className="xp-titlebar"
-          style={{ height: 22, cursor: dragging ? "grabbing" : "grab" }}
+          style={{ cursor: dragging ? "grabbing" : "grab" }}
           onMouseDown={startDrag}
         >
           <span>Friendly Tip</span>

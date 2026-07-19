@@ -33,7 +33,7 @@ export default function AIMChat({ onOpenApp }: Props) {
     {
       role: "assistant",
       content:
-        "hiii welcome to my AIM-style chat :)\nask me anything about mariah - i can show you her work, projects, the case studies, or how to navigate this site!",
+        "hi, i'm mariah's AIM-style chat assistant :)\nask me anything about mariah - i can show you her work, projects, the case studies, or how to navigate this site!",
       ts: Date.now(),
     },
   ]);
@@ -200,7 +200,13 @@ function linkify(text: string): React.ReactNode[] {
     const trailing = raw.slice(trimmed.length);
     const href = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
     out.push(
-      <a key={key++} className="xp-link" href={href} target="_blank" rel="noreferrer">
+      <a
+        key={key++}
+        className="xp-link"
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+      >
         {trimmed}
       </a>,
     );

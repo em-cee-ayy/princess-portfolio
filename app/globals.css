@@ -655,10 +655,27 @@ a.xp-link:hover {
     height: 8px;
   }
 
-  /* dialogs (Friendly Tip) fit small screens */
+  /* dialogs (Friendly Tip) fit small screens; their chrome stays compact -
+     the 34px window titlebar buttons look cartoonish on a small dialog */
   .dialog-box {
     min-width: 0;
     width: min(340px, calc(100vw - 24px));
+  }
+  .dialog-box .xp-titlebar {
+    height: 28px;
+    font-size: 12px;
+  }
+  .dialog-box .xp-titlebar-btn {
+    width: 26px;
+    height: 22px;
+    font-size: 11px;
+    line-height: 20px;
+  }
+
+  /* classic buttons (OK / Cancel / Send / score it): comfortable tap size */
+  .xp-btn {
+    padding: 8px 16px;
+    font-size: 13px;
   }
 
   /* the sense→classify→adapt→learn strip stacks instead of squeezing */
